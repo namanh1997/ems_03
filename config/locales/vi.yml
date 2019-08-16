@@ -7,11 +7,11 @@ vi:
     header:
       home: Trang chủ
       exams: Bài kiểm tra
-      login: Đăng nhập
+      signin: Đăng nhập
   static_pages:
     home:
       title: Trang chủ
       header: Chào mừng đến với Exam Online
       content: Phát triển kỹ năng lập trình của bạn bằng những bài kiểm tra
         miễn phí và chất lượng
-      signup: Hãy đăng ký
+      signup: Hãy đăng nhập

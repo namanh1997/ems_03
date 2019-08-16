@@ -12,6 +12,6 @@ class User < ApplicationRecord
   has_secure_password
   validates :password, presence: true,
     length: {minimum: Settings.minimum_length_pass}
-  validates :phone, presence: true,
+  validates :phone,
     length: {maximum: Settings.maximum_length_phone}
 end

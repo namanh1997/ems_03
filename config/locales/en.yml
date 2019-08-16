@@ -7,10 +7,22 @@ en:
     header:
       home: Home
       exams: Exams
-      login: Log in
+      signin: Sign in
+      signout: Sign out
+      account: Account
+      setting: Settings
+      profile: Profile
+      users: Users
   static_pages:
     home:
       title: Home
-      header: Welcom to Exam Online
+      header: Welcome to Exam Online
       content: Expand on your experience of coding with FREE Top-Quality Exams
-      signup: Sign up
+      signin: Sign in
+  sessions:  
+    new:
+      title: Sign in
+      signin: Sign in
+    create:
+      invalid: Invalid email/password combination
+  no_user: No user
