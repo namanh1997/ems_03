@@ -3,3 +3,5 @@ maximum_length_email: 255
 max_content: 140
 minimum_length_pass: 6
 maximum_length_phone: 15
+size_gravatar: 80
+subjects_per_page: 12

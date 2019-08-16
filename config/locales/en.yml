@@ -1,5 +1,9 @@
 en:
   exam_online: Exam Online
+  no_user: User doesn't exist
+  no_subject: Subject doesn't exist
+  create_subject_successful: Create subject successful
+  create_subject_failed: Failed to create subject
   layouts:
     footer:
       english: English
@@ -7,10 +11,43 @@ en:
     header:
       home: Home
       exams: Exams
-      login: Log in
+      signin: Sign in
+      signout: Sign out
+      account: Account
+      settings: Settings
+      profile: Profile
+      users: Users
+  sessions:  
+    new:
+      title: Sign in
+      signin: Sign in
+    create:
+      invalid: Invalid email/password combination
+  shared:
+    error_messages:
+      form: The form contains
+      error_count:
+        one: 1 error
+        other: "%{count} errors"
   static_pages:
     home:
       title: Home
-      header: Welcom to Exam Online
-      content: Expand on your experience of coding with FREE Top-Quality Exams
-      signup: Sign up
+      header: Welcome to Exam Online
+      content: Expand on your experience of coding with 
+        FREE Top-Quality Exams
+      signin: Sign in
+  subject:
+    index:
+      title: Subjects
+      header: Subject list
+      new_subject: New Subject
+    new:
+      header: New Subject
+      create: Create new subject
+  views:
+    pagination:
+      first: "&laquo; First"
+      last: "Last &raquo;"
+      previous: "&lsaquo; Prev"
+      next: "Next &rsaquo;"
+      truncate: "&hellip;"

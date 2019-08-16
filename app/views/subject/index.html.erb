@@ -1,0 +1,21 @@
+<% provide :title, t(".title") %>
+<h1><% t ".header" %></h1>
+
+<div class="container">
+  <%= button_to t(".new_subject"), {action: :new}, {method: :get,
+    class: "btn btn-primary", id: "btn-new-subject"} %>
+</div>
+
+<div class="container">
+  <ul class="subjects">
+    <% @subjects.each_slice(3) do |chunk| %>
+      <% chunk.each do |subject| %>
+        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-centered">
+          <%= link_to subject.name, subject %>
+        </div>
+      <% end %>
+    <% end %>
+  </ul>
+</div>
+
+<%= paginate @subjects, theme: "twitter-bootstrap-3" %>

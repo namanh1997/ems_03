@@ -1,5 +1,9 @@
 vi:
   exam_online: Exam Online
+  no_user: Người dùng không tồn tại
+  no_subject: Chủ đề không tồn tại
+  create_subject_successful: Tạo chủ đề thành công
+  create_subject_failed: Tạo chủ đề thất bại
   layouts:
     footer:
       english: English
@@ -7,11 +11,43 @@ vi:
     header:
       home: Trang chủ
       exams: Bài kiểm tra
-      login: Đăng nhập
+      signin: Đăng nhập
+      signout: Đăng xuất
+      account: Tài khoản
+      settings: Cài đặt
+      profile: Thông tin cá nhân
+      users: Người dùng
+  sessions:  
+    new:
+      title: Đăng nhập
+      signin: Đăng nhập
+    create:
+      invalid: Email hoặc mật khẩu không chính xác
+  shared:
+    form: Có
+    error_messages:
+      error_count:
+        one: 1 lỗi 
+        other: "%{count} lỗi"
   static_pages:
     home:
       title: Trang chủ
       header: Chào mừng đến với Exam Online
       content: Phát triển kỹ năng lập trình của bạn bằng những bài kiểm tra
         miễn phí và chất lượng
-      signup: Hãy đăng ký
+      signup: Hãy đăng nhập
+  subject:
+    index:
+      title: Chủ đề
+      header: Danh sách chủ đề
+      new_subject: Tạo chủ đề
+    new:
+      header: Chủ đề mới
+      create: Tạo chủ đề mới
+  views:
+    pagination:
+      first: "&laquo; Đầu"
+      last: "Cuối &raquo;"
+      previous: "&lsaquo; Trước"
+      next: "Sau &rsaquo;"
+      truncate: "&hellip;"
