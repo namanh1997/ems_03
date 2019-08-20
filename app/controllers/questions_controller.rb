@@ -1,4 +1,6 @@
 class QuestionsController < ApplicationController
+  before_action :load_subject, only: :create
+
   def index
     @questions = Question.sort_by_name.page(params[:page])
                          .per Settings.questions_per_page
@@ -6,6 +8,7 @@ class QuestionsController < ApplicationController
 
   def new
     @question = Question.new
+    4.times{@question.answers.build}
   end
 
   def show
@@ -16,7 +19,6 @@ class QuestionsController < ApplicationController
   end
 
   def create
-    load_subject
     @question = @subject.questions.build question_params
     if @question.save
       flash[:info] = t "create_question_successful"
@@ -37,7 +39,7 @@ class QuestionsController < ApplicationController
   end
 
   def question_params
-    params.require(:question).permit :content, :question_type,
-      :level
+    params.require(:question).permit(:content, :question_type,
+      :level, answers_attributes: [:content, :correct])
   end
 end

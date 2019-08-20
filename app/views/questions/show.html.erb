@@ -1,9 +1,35 @@
 <% provide :title, @question.subject_name %>
-<div class="row">
-  <h1>
-    <%= @question.subject_name %>
-  </h1>
-  <p>
-    <%= @question.content %>
-  </p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-md-offset-2">
+      <h1>
+        <%= @question.subject_name %>
+      </h1>
+      <p>
+        <%= t ".question" %> <%= @question.content %>
+      </p>
+      <p>
+        <%= t ".difficulty" %> <%= @question.level %>
+      </p>
+      <p>
+        <%= t ".q_type" %> <%= @question.question_type
+          .split("_").map(&:capitalize).join(" ") %>
+      </p>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th class="col-md-2" scope="col"><%= t ".correct" %></th>
+            <th scope="col"><%= t ".answer" %></th>
+          </tr>
+        </thead>
+        <tbody class="answers">  
+            <%= render partial: "answers/answer",
+              collection: @question.answers %>
+        </tbody>
+      </table>
+      <%= button_to t(".edit"), @question, method: :put %>
+      <%= button_to t(".delete"), @question, method: :delete,
+       data:{confirm: t(".sure")} %>
+    </div>
+  </div>
 </div>
