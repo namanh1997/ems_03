@@ -3,7 +3,8 @@ en:
   no_user: User doesn't exist
   no_subject: Subject doesn't exist
   create_subject_successful: Create subject successful
-  create_subject_failed: Failed to create subject
+  create_user_successful: Create user successful
+  create_user_failed: Failed to create user
   layouts:
     footer:
       english: English
@@ -44,6 +45,14 @@ en:
     new:
       header: New Subject
       create: Create new subject
+  users:
+    index:
+      title: Users
+      header: User list
+      new_user: New User
+    new:
+      header: New User
+      create: Create new user
   views:
     pagination:
       first: "&laquo; First"

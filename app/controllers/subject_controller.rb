@@ -3,15 +3,16 @@ class SubjectController < ApplicationController
     @subject = Subject.new
   end
 
-  def index
-    @subjects = Subject.by_name.page(params[:page]).per Settings.subjects_per_page
-  end
-
   def show
     @subject = Subject.find_by(id: params[:id])
     return if @subject
     flash[:danger] = t "no_subject"
     redirect_to root_path
+  end
+
+  def index
+    @subjects = Subject.sort_by_name.page(params[:page])
+                       .per Settings.subjects_per_page
   end
 
   def create
