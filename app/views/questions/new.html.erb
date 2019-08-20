@@ -1,0 +1,49 @@
+<% provide :title, t(".title") %>
+<h1><%= t ".header" %></h1>
+
+<div class="row">
+  <div class="col-md-8 col-md-offset-2">
+    <div id="new-question">
+      <%= form_for(@question) do |f| %>
+        <%= render "shared/error_messages", object: f.object %>
+        
+        <div class="form-group">
+          <%= f.label :subject, t(".subject") %>
+          <%= collection_select :subject, :id, subject_collection, id, name,
+            {}, {class: "form-control"} %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :question, t(".question") %>
+          <%= f.text_area :content, class: "form-control" %><br>
+        </div>
+        
+        <div class="form-group">
+          <%= f.label :question_level, t(".difficulty") %><br>
+
+          <%= f.collection_select :level, question_collection, level, level,
+            {}, {class: "form-control"} %>
+
+        </div>
+
+        <div class="form-group">
+          <%= f.label :question_type, t(".q_type") %><br>
+        
+          <%= f.radio_button :question_type,
+            Question.question_types.key(Question.question_types[:single_choice]),
+            checked: true %>
+          <%= f.label :question_type, t(".single_answer"),
+            value: Question.question_types.key(Question.question_types[:single_choice]) %>
+          <%= f.radio_button :question_type,
+            Question.question_types.key(Question.question_types[:multi_choice]) %>
+          <%= f.label :question_type, t(".multi_answer"),
+            value: Question.question_types.key(Question.question_types[:multi_choice]) %>
+        </div>
+
+        <div class="center-block">
+          <%= f.submit t(".create"), class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

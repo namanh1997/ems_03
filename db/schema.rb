@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 2019_08_08_025946) do
     t.bigint "subject_id"
     t.integer "supervisor_id"
     t.string "content"
-    t.integer "type", default: 1
+    t.integer "question_type", default: 1
     t.integer "level", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
