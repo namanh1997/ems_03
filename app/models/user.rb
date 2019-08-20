@@ -14,4 +14,6 @@ class User < ApplicationRecord
     length: {minimum: Settings.minimum_length_pass}
   validates :phone,
     length: {maximum: Settings.maximum_length_phone}
+    
+  scope :sort_by_name, -> {order :name}
 end
