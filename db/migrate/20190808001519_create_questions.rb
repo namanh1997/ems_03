@@ -4,7 +4,7 @@ class CreateQuestions < ActiveRecord::Migration[5.2]
       t.references :subject, foreign_key: true
       t.integer :supervisor_id
       t.string :content
-      t.integer :type, default: 1
+      t.integer :question_type, default: 1
       t.integer :level, default: 0
 
       t.timestamps

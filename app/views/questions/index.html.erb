@@ -1,0 +1,15 @@
+<% provide :title, t(".title") %>
+<h1><% t ".header" %></h1>
+
+<div class="container">
+  <%= button_to t(".new_question"), {action: :new}, {method: :get,
+    class: "btn btn-primary", id: "btn-new-question"} %>
+</div>
+
+<div class="container">
+  <ul class="questions">
+    <%= render @questions %>
+  </ul>
+</div>
+
+<%= paginate @questions, theme: "twitter-bootstrap-3" %>

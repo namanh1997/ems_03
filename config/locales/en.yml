@@ -2,9 +2,12 @@ en:
   exam_online: Exam Online
   no_user: User doesn't exist
   no_subject: Subject doesn't exist
+  no_question: Question does not exist
   create_subject_successful: Create subject successful
   create_user_successful: Create user successful
   create_user_failed: Failed to create user
+  create_question_successful: Create question successfull
+  create_question_failed: Failed to create question
   layouts:
     footer:
       english: English
@@ -18,6 +21,23 @@ en:
       settings: Settings
       profile: Profile
       users: Users
+  questions:
+    index:
+      title: Question list
+      new_question: New question
+    new:
+      title: New question
+      header: New question
+      create: Create question
+      subject: Subject
+      question: Question
+      difficulty: Difficulty
+      q_type: Question type
+      easy: Easy
+      normal: Normal
+      hard: Hard
+      single_answer: Single answer
+      multi_answer: Multiple answer
   sessions:  
     new:
       title: Sign in
