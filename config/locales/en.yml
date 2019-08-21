@@ -50,9 +50,20 @@ en:
       title: Users
       header: User list
       new_user: New User
-    new:
+    form:
       header: New User
       create: Create new user
+      name: Name
+      email: Email
+      password: Password
+      confirmation: Confirmation
+      role: Role
+      trainee: Trainee
+      supervisor: Supervisor
+    new:
+      header: Create User
+      title: Create User
+      btt: Create
   views:
     pagination:
       first: "&laquo; First"
