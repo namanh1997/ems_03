@@ -1,4 +1,7 @@
 class Question < ApplicationRecord
+  QUESTION_PARAMS = [:content, :question_type,
+  :level, answers_attributes: [:content, :correct]].freeze
+
   belongs_to :subject
   has_many :answers, dependent: :destroy
 
