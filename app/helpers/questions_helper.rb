@@ -18,4 +18,8 @@ module QuestionsHelper
   def level
     :level
   end
+
+  def question_enum key
+    Question.question_types.key Question.question_types[key]
+  end
 end
