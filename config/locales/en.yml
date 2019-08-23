@@ -8,6 +8,10 @@ en:
   create_user_failed: Failed to create user
   create_question_successful: Create question successfull
   create_question_failed: Failed to create question
+  question_destroyed: Destroy question successfull
+  question_destroyed_failed: Failed to destroy question
+  question_update: Update question successful
+  question_update_failed: Update question failed
   layouts:
     footer:
       english: English
@@ -21,14 +25,8 @@ en:
       settings: Settings
       profile: Profile
       users: Users
-  questions:
-    index:
-      title: Question list
-      new_question: New question
-    new:
-      title: New question
-      header: New question
-      create: Create question
+  questions:   
+    form:   
       subject: Subject
       question: Question
       difficulty: Difficulty
@@ -40,6 +38,19 @@ en:
       multi_answer: Multiple correct answer
       answer: Answer
       correct_answer: Correct answer
+      delete_answer: Delete answer
+      add_answer: Add answer
+    edit:
+      title: Edit question
+      header: Edit question
+      update: Update question
+    index:
+      title: Question list
+      new_question: New question
+    new:
+      title: New question
+      header: New question
+      create: Create question
     show:
       question: Question
       difficulty: Difficulty

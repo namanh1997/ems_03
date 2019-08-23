@@ -1,32 +1,53 @@
 class QuestionsController < ApplicationController
   before_action :load_subject, only: :create
+  before_action :load_question, except: %i(index new create)
+  before_action :supervisor_user, only: :destroy
 
   def index
     @questions = Question.sort_by_name.page(params[:page])
                          .per Settings.questions_per_page
   end
 
+  def show; end
+
   def new
     @question = Question.new
-    4.times{@question.answers.build}
-  end
-
-  def show
-    @question = Question.find_by id: params[:id]
-    return if @question
-    flash[:danger] = t "no_question"
-    redirect_to root_path
+    @question.answers.build
   end
 
   def create
     @question = @subject.questions.build question_params
     if @question.save
-      flash[:info] = t "create_question_successful"
+      flash[:success] = t "create_question_successful"
       redirect_to @question
     else
       flash.now[:danger] = t "create_question_failed"
       render :new
     end
+  end
+
+  def edit
+    @answers = @question.answers
+    @subject = @question.subject
+  end
+
+  def update
+    if @question.update_attributes question_params
+      flash[:success] = t "question_update"
+      redirect_to @question
+    else
+      flash.now[:danger] = t "question_update_failed"
+      render :edit
+    end
+  end
+
+  def destroy
+    if @question.destroy
+      flash[:success] = t "question_destroyed"
+    else
+      flash[:danger] = t "question_destroyed_failed"
+    end
+    redirect_to questions_url
   end
 
   private
@@ -38,8 +59,14 @@ class QuestionsController < ApplicationController
     render :new
   end
 
+  def load_question
+    @question = Question.find_by id: params[:id]
+    return if @question
+    flash[:danger] = t "no_question"
+    redirect_to root_path
+  end
+
   def question_params
-    params.require(:question).permit(:content, :question_type,
-      :level, answers_attributes: [:content, :correct])
+    params.require(:question).permit Question::QUESTION_PARAMS
   end
 end

@@ -2,6 +2,9 @@ class Question < ApplicationRecord
   belongs_to :subject
   has_many :answers, dependent: :destroy
 
+  QUESTION_PARAMS = [:content, :question_type, :level, :subject_id,
+    answers_attributes: [:id, :content, :correct, :_destroy]].freeze
+
   delegate :name, to: :subject, prefix: true
   delegate :content, :correct, to: :answers, prefix: true
 
@@ -19,4 +22,8 @@ class Question < ApplicationRecord
   validates :content, presence: true,
     length: {maximum: Settings.maximum_length_question_content},
     uniqueness: {case_sensitive: false}
+
+  def subject_id
+    subject.id
+  end
 end

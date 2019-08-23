@@ -6,13 +6,13 @@
         <%= @question.subject_name %>
       </h1>
       <p>
-        <%= t ".question" %> <%= @question.content %>
+        <%= t ".question" %>: <%= @question.content %>
       </p>
       <p>
-        <%= t ".difficulty" %> <%= @question.level %>
+        <%= t ".difficulty" %>: <%= @question.level %>
       </p>
       <p>
-        <%= t ".q_type" %> <%= @question.question_type
+        <%= t ".q_type" %>: <%= @question.question_type
           .split("_").map(&:capitalize).join(" ") %>
       </p>
       <table class="table table-bordered">
@@ -27,9 +27,10 @@
               collection: @question.answers %>
         </tbody>
       </table>
-      <%= button_to t(".edit"), @question, method: :put %>
-      <%= button_to t(".delete"), @question, method: :delete,
-       data:{confirm: t(".sure")} %>
+      <%= link_to t(".edit"), edit_question_path, class: "btn btn-info" %>
+      <%= button_to t(".delete"), @question,
+        {method: :delete, class: "btn btn-danger",
+        data:{confirm: t(".sure")}} %>
     </div>
   </div>
 </div>

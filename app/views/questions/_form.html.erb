@@ -1,0 +1,49 @@
+<%= form_for @question do |f| %>
+  <%= render "shared/error_messages", object: f.object %>
+
+  <div class="form-group">
+    <% if f.object.persisted? %>
+      <%= f.label :subject, t(".subject") %>
+      <%= f.collection_select :subject_id, subject_collection, id, name,
+        {}, {class: "form-control select-dropdown"} %>
+    <% else %>
+      <%= f.label :subject, t(".subject") %>
+      <%= collection_select :subject, :id, subject_collection, id, name,
+        {}, {class: "form-control select-dropdown"} %>
+    <% end %>
+  </div>
+
+  <%= f.label :content, t(".question") %>
+  <%= f.text_area :content, class: "form-control" %><br>
+
+  <div class="form-group">
+    <%= f.label :question_level, t(".difficulty") %><br>
+
+    <%= f.collection_select :level, question_collection, level, level,
+      {}, {class: "form-control select-dropdown"} %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :question_type, t(".q_type") %><br>
+  
+    <%= f.radio_button :question_type,
+      question_enum("single_choice"),
+      checked: true %>
+    <%= f.label :question_type, t(".single_answer"),
+      value: question_enum("single_choice") %>
+    <%= f.radio_button :question_type,
+      question_enum("multi_choice") %>
+    <%= f.label :question_type, t(".multi_answer"),
+      value: question_enum("multi_choice") %>
+  </div>
+
+  <div class="form-group">
+    <%= f.fields_for :answers do |answer| %>
+      <%= render "answer_fields", f: answer %>
+    <% end %>
+    <%= link_to_add_association t(".add_answer"), f, :answers,
+        class: "btn btn-info" %>
+  </div>
+
+  <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+<% end %>

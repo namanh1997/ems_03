@@ -1,4 +1,8 @@
 $(document).ready(function(){
+  $(".select-dropdown").select2({
+    theme: "bootstrap"
+  });
+
   $("input:radio[name='question[question_type]']").on("change", function(){
     if ($(this).val() == "single_choice") {
       $(".answer-checkbox").on("change", function() {

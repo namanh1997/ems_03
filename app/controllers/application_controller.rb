@@ -13,4 +13,8 @@ class ApplicationController < ActionController::Base
   def default_url_options
     {locale: I18n.locale}
   end
+
+  def supervisor_user
+    redirect_to root_url unless current_user.supervisor?
+  end
 end
