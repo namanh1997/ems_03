@@ -11,7 +11,7 @@
     <% @subjects.each_slice(3) do |chunk| %>
       <% chunk.each do |subject| %>
         <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-centered">
-          <%= link_to subject.name, subject %>
+          <%= link_to subject.name, exams_path(subject_id: subject.id) %>
         </div>
       <% end %>
     <% end %>

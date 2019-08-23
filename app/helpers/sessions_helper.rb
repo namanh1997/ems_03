@@ -25,7 +25,7 @@ module SessionsHelper
   end
 
   private
-  
+
   def current_supervisor?
     current_user.supervisor?
   end

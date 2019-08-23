@@ -3,7 +3,8 @@ en:
   pleaselogin: Please login!
   no_user: User doesn't exist
   no_subject: Subject doesn't exist
-  no_question: Question does not exist
+  no_question: Question doesn't exist
+  no_exam: Exam doesn't exist
   create_subject_successful: Create subject successful
   create_user_successful: Create user successful
   create_user_failed: Failed to create user
@@ -13,6 +14,27 @@ en:
   question_destroyed_failed: Failed to destroy question
   question_update: Update question successful
   question_update_failed: Update question failed
+  create_exam_successful: Create exam successfull
+  create_exam_failed: Failed to create exam
+  exams:
+    new:
+      title: New exam
+      header: New exam
+      create: Create exam
+    form:
+      subject: Subject
+      exam: Exam name
+      no_easy_question: Number of easy questions
+      no_normal_question: Number of normal questions
+      no_hard_question: Number of hard questions
+      no_question: Number of questions
+      pass_score: Pass score
+      total_score: Total score
+      time_limit: Time limit
+    index:
+      title: Exam list
+      header: Exam list
+      new_exam: New exam
   layouts:
     footer:
       english: English
@@ -26,8 +48,8 @@ en:
       settings: Settings
       profile: Profile
       users: Users
-  questions:   
-    form:   
+  questions:
+    form:
       subject: Subject
       question: Question
       difficulty: Difficulty
@@ -88,6 +110,8 @@ en:
     new:
       header: New Subject
       create: Create new subject
+    show:
+      new_exam: New Exam
   users:
     index:
       title: Users
