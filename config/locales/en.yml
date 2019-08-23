@@ -36,8 +36,19 @@ en:
       easy: Easy
       normal: Normal
       hard: Hard
-      single_answer: Single answer
-      multi_answer: Multiple answer
+      single_answer: Single correct answer
+      multi_answer: Multiple correct answer
+      answer: Answer
+      correct_answer: Correct answer
+    show:
+      question: Question
+      difficulty: Difficulty
+      q_type: Question type
+      correct: Correct
+      answer: Answer
+      edit: Edit
+      delete: Delete
+      sure: Are you sure?
   sessions:  
     new:
       title: Sign in

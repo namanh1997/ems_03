@@ -13,17 +13,14 @@
             {}, {class: "form-control"} %>
         </div>
 
-        <div class="form-group">
-          <%= f.label :question, t(".question") %>
-          <%= f.text_area :content, class: "form-control" %><br>
-        </div>
+        <%= f.label :content, t(".question") %>
+        <%= f.text_area :content, class: "form-control" %><br>
         
         <div class="form-group">
           <%= f.label :question_level, t(".difficulty") %><br>
 
           <%= f.collection_select :level, question_collection, level, level,
             {}, {class: "form-control"} %>
-
         </div>
 
         <div class="form-group">
@@ -38,6 +35,20 @@
             Question.question_types.key(Question.question_types[:multi_choice]) %>
           <%= f.label :question_type, t(".multi_answer"),
             value: Question.question_types.key(Question.question_types[:multi_choice]) %>
+        </div>
+
+        <div class="form-group">
+        
+          <%= f.fields_for :answers do |answer| %>
+          <div id="new-answer">
+            <%= answer.label :content, t(".answer") %>
+            <%= answer.text_field :content, class: "form-control" %>
+
+            <%= answer.check_box :correct, {class: "answer-checkbox"}, "1", "0" %>
+            <%= answer.label :correct, t(".correct_answer") %>
+          </div>
+          <% end %>
+          
         </div>
 
         <div class="center-block">

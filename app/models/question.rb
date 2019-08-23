@@ -1,10 +1,15 @@
 class Question < ApplicationRecord
   belongs_to :subject
-  has_many :answers
+  has_many :answers, dependent: :destroy
 
   delegate :name, to: :subject, prefix: true
+  delegate :content, :correct, to: :answers, prefix: true
 
-  accepts_nested_attributes_for :subject
+  validates_presence_of :answers
+
+  accepts_nested_attributes_for :answers,
+    allow_destroy: true,
+    reject_if: proc{|attributes| attributes["content"].blank?}
 
   scope :sort_by_name, ->{order :content}
 
