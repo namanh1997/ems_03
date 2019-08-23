@@ -1,4 +1,5 @@
 class QuestionsController < ApplicationController
+  before_action :supervisor_user
   before_action :load_subject, only: :create
   before_action :load_question, except: %i(index new create)
   before_action :supervisor_user, only: :destroy
@@ -68,5 +69,9 @@ class QuestionsController < ApplicationController
 
   def question_params
     params.require(:question).permit Question::QUESTION_PARAMS
+  end
+
+  def supervisor_user
+    redirect_to(root_url) unless current_supervisor?
   end
 end

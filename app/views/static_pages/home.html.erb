@@ -3,6 +3,7 @@
   <h1><%= t ".header" %></h1>
 
   <h2><%= t ".content" %></h2>
-
-  <%= link_to t(".signin"), signin_path, class: "btn btn-lg btn-primary" %>
-</div>
+  <% if !signed_in? %>
+    <%= link_to t(".signin"), signin_path, class: "btn btn-lg btn-primary" %>
+  <% end %>
+</div>  

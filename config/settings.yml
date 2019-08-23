@@ -5,6 +5,7 @@ minimum_length_pass: 6
 maximum_length_phone: 15
 size_gravatar: 80
 subjects_per_page: 12
+users_per_page: 12
 questions_per_page: 20
 maximum_length_question_content: 400
 maximum_length_subject_name: 20 

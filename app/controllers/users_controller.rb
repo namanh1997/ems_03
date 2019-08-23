@@ -1,14 +1,14 @@
 class UsersController < ApplicationController
+  before_action :signed_in_user, except: %i(new show create)
+  before_action :load_user, except: %i(new index create)
+  before_action :correct_user, only: %i(edit update)
+  before_action :supervisor_user, only: :destroy
+
   def new
     @user = User.new
   end
 
-  def show
-    @user = User.find_by id: params[:id]
-    return if @user
-    flash[:danger] = t ".no_user"
-    redirect_to root_path
-  end
+  def show; end
 
   def index
     @users = User.sort_by_name.page(params[:page]).per Settings.users_per_page
@@ -25,10 +25,44 @@ class UsersController < ApplicationController
     end
   end
 
+  def destroy
+    if @user.destroy
+      flash[:success] = "user deleted"
+      redirect_to users_path
+    else
+      flash.now[:danger] = t "delete_user_failed"
+      redirect_to users_path
+    end
+  end
+
+  def edit; end
+
+  def update
+    if @user.update user_params
+      redirect_to @user
+    else
+      render :edit
+    end
+  end
+
   private
 
+  def load_user
+    @user = User.find_by id: params[:id]
+    return if @user
+    flash[:danger] = t ".no_user"
+    redirect_to root_path
+  end
+
   def user_params
-    params.require(:user).permit :name, :email, :password,
-      :password_confirmation, :role
+    params.require(:user).permit User::USER_PARAMS
+  end
+
+  def correct_user
+    redirect_to root_url unless current_user?(@user) || current_supervisor?
+  end
+
+  def supervisor_user
+    redirect_to root_url unless current_supervisor?
   end
 end

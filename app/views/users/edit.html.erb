@@ -1,0 +1,35 @@
+<% provide :title, t(".title") %>
+<h1><%= t ".header" %></h1>
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for @user do |f| %>
+      <%= render "shared/error_messages", object: @user %>
+
+      <%= f.label t(".name") %>
+      <%= f.text_field :name, class: "form-control" %>
+
+      <%= f.label t(".email") %>
+      <%= f.email_field :email, class: "form-control" %>
+
+      <%= f.label t(".password") %>
+      <%= f.password_field :password, class: "form-control" %>
+
+      <%= f.label t(".confirmation") %>
+      <%= f.password_field :password_confirmation, class: "form-control" %>
+      
+      <br />
+      
+      <% if current_supervisor? %>
+        <%= f.label t(".role")%><br />
+
+        <%= f.radio_button :role, user_role("trainee"), checked: true %>
+        <%= f.label :role, t(".trainee"), value: user_role("trainee") %>
+
+        <%= f.radio_button :role, user_role("supervisor") %>
+        <%= f.label :role, t(".supervisor"), value: user_role("supervisor") %>
+      <% end %>
+      
+      <%= f.submit t ".save_changes", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>

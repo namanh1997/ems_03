@@ -1,5 +1,6 @@
 en:
   exam_online: Exam Online
+  pleaselogin: Please login!
   no_user: User doesn't exist
   no_subject: Subject doesn't exist
   no_question: Question does not exist
@@ -92,6 +93,9 @@ en:
       title: Users
       header: User list
       new_user: New User
+      edit: Edit
+      delete: Delete
+      sure: You sure?
     form:
       header: New User
       create: Create new user
@@ -106,6 +110,14 @@ en:
       header: Create User
       title: Create User
       btt: Create
+    edit:
+      header: Setttings
+      name: Name
+      email: Email
+      password: Password
+      confirmation: Confirmation
+      role: Role
+      save_changes: Save changes
   views:
     pagination:
       first: "&laquo; First"

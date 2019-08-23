@@ -15,4 +15,24 @@ module SessionsHelper
     session.delete(:user_id)
     @current_user = nil
   end
+
+  def current_user? user
+    user == current_user
+  end
+
+  def user_role role
+    User.roles.key User.roles[role]
+  end
+
+  private
+  
+  def current_supervisor?
+    current_user.supervisor?
+  end
+
+  def signed_in_user
+    return if signed_in?
+    flash[:danger] = t ".pleaselogin"
+    redirect_to login_url
+  end
 end
