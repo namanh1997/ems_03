@@ -8,13 +8,6 @@ class QuestionsController < ApplicationController
                          .per Settings.questions_per_page
   end
 
-  def show; end
-
-  def new
-    @question = Question.new
-    @question.answers.build
-  end
-
   def create
     @question = @subject.questions.build question_params
     if @question.save
@@ -26,10 +19,17 @@ class QuestionsController < ApplicationController
     end
   end
 
+  def new
+    @question = Question.new
+    @question.answers.build
+  end
+
   def edit
     @answers = @question.answers
     @subject = @question.subject
   end
+
+  def show; end
 
   def update
     if @question.update_attributes question_params

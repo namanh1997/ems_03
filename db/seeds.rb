@@ -1,17 +1,23 @@
 User.create!(name: "admin",
-             email: "admin@gmail.com",
-             role: 1,
-             password: "12345678",
-             password_confirmation: "12345678")
+  email: "admin@gmail.com",
+  role: 1,
+  password: "12345678",
+  password_confirmation: "12345678")
+
+User.create!(name: "user",
+  email: "user@gmail.com",
+  role: 0,
+  password: "12345678",
+  password_confirmation: "12345678")
 
 50.times do |n|
   name  = Faker::Name.name
   email = "example-#{n+1}@railstutorial.org"
   password = "password"
   User.create!(name: name,
-               email: email,
-               password: password,
-               password_confirmation: password)
+    email: email,
+    password: password,
+    password_confirmation: password)
 end
 
 Subject.create!([{name: "Ruby"},
@@ -26,7 +32,7 @@ Subject.create!([{name: "Ruby"},
 subjects = Subject.order(:created_at).take(6)
 q_type_rand = Random.new
 level = Random.new
-50.times do
+100.times do
   subjects.each do |subject|
     qcontent = Faker::Lorem.unique.question(word_count: 5)
     q_type = q_type_rand.rand(1..2)
@@ -76,6 +82,36 @@ level = Random.new
             correct: Faker::Boolean.boolean
           }]
         )
+    end
+  end
+end
+
+5.times do
+  subjects.each do |subject|
+    easy_q = 10
+    normal_q = 10
+    hard_q = 10
+    total_score = easy_q + normal_q * 2 + hard_q * 3
+    pass = Random.new
+    num_q = easy_q + normal_q + hard_q
+    exam = subject.exams.create!(
+      name: Faker::Name.unique.name,
+      time_limit: 60.minutes.to_i,
+      number_question: num_q,
+      pass_score: pass.rand(1..total_score),
+      total_score: total_score
+    )
+    easy_q.times do
+      exam.add_question(Question
+        .get_by_level_and_subject(Question.levels[:easy], subject.id).sample)
+    end
+    normal_q.times do
+      exam.add_question(Question
+        .get_by_level_and_subject(Question.levels[:normal], subject.id).sample)
+    end
+    hard_q.times do
+      exam.add_question(Question
+        .get_by_level_and_subject(Question.levels[:hard], subject.id).sample)
     end
   end
 end

@@ -10,3 +10,7 @@ questions_per_page: 15
 exams_per_page: 15
 maximum_length_question_content: 400
 maximum_length_subject_name: 20 
+remaining_time: 3600
+hours: 3600
+minutes: 60
+questions: 10

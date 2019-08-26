@@ -113,6 +113,11 @@ en:
       create: Create new subject
     show:
       new_exam: New Exam
+  do_exam:
+    new:
+      title: Do exam
+      header: Do exam
+      submit: Submit
   users:
     index:
       title: Users

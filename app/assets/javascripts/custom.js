@@ -1,4 +1,4 @@
-$(document).ready(function(){
+$(document).on("turbolinks:load", function(){
   $(".select-dropdown").select2({
     theme: "bootstrap"
   });
@@ -26,7 +26,7 @@ $(document).ready(function(){
     normal = parseInt($("#normal-question").val());
     normal_difficulty = normal * 2;
     hard = parseInt($("#hard-question").val());
-    hard_difficulty = hard * 2;
+    hard_difficulty = hard * 3;
     total_difficulty = easy + normal_difficulty + hard_difficulty
     total_questions = easy + normal + hard
     $("#total-questions").val(total_questions);
@@ -39,3 +39,16 @@ $(document).ready(function(){
     load_new_exam();
   });
 });
+
+var countdown = function() {
+  $('#clock').countdown({ //clock là thẻ chứa bộ đếm đồng hồ
+    until: $('#remaining_time').val(), //thời gian đếm
+    format: 'HMS', //định dạng thời gian
+    onExpiry: function() {
+      $('.submit-time-out').hidden(); //submit khi hết giờ
+    }
+  });
+}
+
+document.addEventListener('turbolinks:load', countdown);
+$(document).on('page:update', countdown);
