@@ -1,12 +1,10 @@
 class Question < ApplicationRecord
-  QUESTION_PARAMS = [:content, :question_type,
-  :level, answers_attributes: [:content, :correct]].freeze
+  QUESTION_PARAMS = [:content, :question_type, :level, :subject_id,
+  answers_attributes: [:id, :content, :correct, :_destroy]].freeze
 
   belongs_to :subject
+  belongs_to :exam, optional: true
   has_many :answers, dependent: :destroy
-
-  QUESTION_PARAMS = [:content, :question_type, :level, :subject_id,
-    answers_attributes: [:id, :content, :correct, :_destroy]].freeze
 
   delegate :name, to: :subject, prefix: true
   delegate :content, :correct, to: :answers, prefix: true
@@ -18,6 +16,7 @@ class Question < ApplicationRecord
     reject_if: proc{|attributes| attributes["content"].blank?}
 
   scope :sort_by_name, ->{order :content}
+  scope :get_by_id, ->(id){where id: id}
 
   enum level: {easy: 0, normal: 1, hard: 2}
   enum question_type: {single_choice: 1, multi_choice: 2}

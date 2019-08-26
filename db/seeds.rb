@@ -4,7 +4,7 @@ User.create!(name: "admin",
              password: "12345678",
              password_confirmation: "12345678")
 
-99.times do |n|
+50.times do |n|
   name  = Faker::Name.name
   email = "example-#{n+1}@railstutorial.org"
   password = "password"
@@ -24,13 +24,58 @@ Subject.create!([{name: "Ruby"},
 ])
 
 subjects = Subject.order(:created_at).take(6)
-q_type = Random.new
+q_type_rand = Random.new
 level = Random.new
 50.times do
-  content = Faker::Lorem.sentence(5)
-  subjects.each { |subject| subject.questions
-    .create!(content: content,
-             supervisor_id: 1,
-             question_type: q_type.rand(1..2),
-             level: level.rand(3)) }
+  subjects.each do |subject|
+    qcontent = Faker::Lorem.unique.question(word_count: 5)
+    q_type = q_type_rand.rand(1..2)
+    if q_type == Question.question_types[:single_choice]
+      question = subject.questions.create!(
+        content: qcontent,
+        supervisor_id: 1,
+        question_type: q_type,
+        level: level.rand(3),
+        answers_attributes: [{
+          content: Faker::Food.fruits,
+          correct: true
+        },
+        {
+          content: Faker::Verb.base,
+          correct: false
+        },
+        {
+          content: Faker::Lorem.word,
+          correct: false
+        },
+        {
+          content: Faker::Restaurant.name,
+          correct: false
+        }]
+      )
+    elsif q_type == Question.question_types[:multi_choice]
+        question = subject.questions.create!(
+          content: qcontent,
+          supervisor_id: 1,
+          question_type: q_type,
+          level: level.rand(3),
+          answers_attributes: [{
+            content: Faker::Food.fruits,
+            correct: true
+          },
+          {
+            content: Faker::Verb.base,
+            correct: true
+          },
+          {
+            content: Faker::Lorem.word,
+            correct: false
+          },
+          {
+            content: Faker::Restaurant.name,
+            correct: Faker::Boolean.boolean
+          }]
+        )
+    end
+  end
 end

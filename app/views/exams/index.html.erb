@@ -1,0 +1,16 @@
+<% provide :title, t(".title") %>
+<h1><% t ".header" %></h1>
+
+<div class="container">
+  <%= link_to t(".new_exam"),
+    new_exam_path(subject_id: params[:subject_id]),
+    class: "btn btn-primary float-right" %>
+</div>
+
+<div class="container">
+  <ul class="exams">
+    <%= render @exams %>
+  </ul>
+</div>
+
+<%= paginate @exams, theme: "twitter-bootstrap-3" %>

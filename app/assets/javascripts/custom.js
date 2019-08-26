@@ -20,4 +20,22 @@ $(document).ready(function(){
       });
     }
   });
+
+  function load_new_exam(){
+    easy = parseInt($("#easy-question").val());
+    normal = parseInt($("#normal-question").val());
+    normal_difficulty = normal * 2;
+    hard = parseInt($("#hard-question").val());
+    hard_difficulty = hard * 2;
+    total_difficulty = easy + normal_difficulty + hard_difficulty
+    total_questions = easy + normal + hard
+    $("#total-questions").val(total_questions);
+    $("#total-score").val(total_difficulty);
+  }
+
+  load_new_exam();
+
+  $(".num-question").change(function(){
+    load_new_exam();
+  });
 });

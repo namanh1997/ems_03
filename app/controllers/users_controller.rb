@@ -28,11 +28,10 @@ class UsersController < ApplicationController
   def destroy
     if @user.destroy
       flash[:success] = "user deleted"
-      redirect_to users_path
     else
       flash.now[:danger] = t "delete_user_failed"
-      redirect_to users_path
     end
+    redirect_to users_path
   end
 
   def edit; end

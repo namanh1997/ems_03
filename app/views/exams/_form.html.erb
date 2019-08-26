@@ -1,0 +1,57 @@
+<%= form_for @exam do |f| %>
+  <%= render "shared/error_messages", object: f.object %>
+
+  <div class="form-group">
+    <%= f.label :subject_id, t(".subject") %>
+    <%= f.collection_select :subject_id, subject_collection, id, name,
+      {}, {class: "form-control select-dropdown"} %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :name, t(".exam") %>
+    <%= f.text_field :name, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :easy_question, t(".no_easy_question") %>
+    <%= f.text_field :easy_question, class: "form-control num-question",
+      id: "easy-question", value: "0" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :normal_question, t(".no_normal_question") %>
+    <%= f.text_field :normal_question, class: "form-control num-question",
+      id: "normal-question", value: "0" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :hard_question, t(".no_hard_question") %>
+    <%= f.text_field :hard_question, class: "form-control num-question",
+      id: "hard-question", value: "0" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :number_question, t(".no_question") %>
+    <%= f.text_field :number_question, class: "form-control num-question",
+      id: "total-questions", readonly: true %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :pass_score, t(".pass_score") %>
+    <%= f.text_field :pass_score, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :total_score, t(".total_score") %>
+    <%= f.text_field :total_score, class: "form-control",
+      id: "total-score", disabled: true %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :time_limit, t(".time_limit") %>
+    <%= f.time_select :time_limit, class: "form-control",
+      default: {hour: "1", minute: "00"} %>
+  </div>
+
+  <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+<% end %>

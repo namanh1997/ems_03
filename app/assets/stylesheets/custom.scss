@@ -30,6 +30,10 @@ textarea {
   }
 }
 
+.float-right{
+  float: right;
+}
+
 /* typography */
 h1, h2, h3, h4, h5, h6 {
   line-height: 1;
@@ -160,17 +164,47 @@ aside {
   margin-top: 15px;
 }
 
-/*subject index*/
-#btn-new-subject{
-  float: right;
-}
-
-/*user index*/
 #btn-new-user{
   float: right;
 }
 
+/*subject index*/
+.subjects{
+  list-style: none;
+  margin: 0;
+  li {
+    overflow: auto;
+    padding: 10px 0;
+    border-bottom: 1px solid $gray-lighter;
+  }
+}
+
+#btn-new-subject{
+  float: right;
+}
+
 /*question index*/
+.questions{
+  list-style: none;
+  margin: 0;
+  li {
+    overflow: auto;
+    padding: 10px 0;
+    border-bottom: 1px solid $gray-lighter;
+  }
+}
+
 #btn-new-question{
   float: right;
+}
+
+/*exam index*/
+.exams{
+  list-style: none;
+  margin: 0;
+  li {
+    overflow: auto;
+    padding: 10px 0;
+    border-bottom: 1px solid $gray-lighter;
+  }
 }
