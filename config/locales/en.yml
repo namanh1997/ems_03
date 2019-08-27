@@ -5,6 +5,7 @@ en:
   no_subject: Subject doesn't exist
   no_question: Question doesn't exist
   no_exam: Exam doesn't exist
+  no_trainee_exam: Trainee exam doesn't exist
   create_subject_successful: Create subject successful
   create_user_successful: Create user successful
   create_user_failed: Failed to create user
@@ -18,6 +19,8 @@ en:
   question_update_failed: Update question failed
   create_exam_successful: Create exam successfull
   create_exam_failed: Failed to create exam
+  trainee_exam_marked: Mark trainee exam successful
+  trainee_exam_marked_failed: Mark trainee exam failed
   exams:
     new:
       title: New exam
@@ -55,13 +58,14 @@ en:
       mark_exams: Mark Exams
   mark_exams:
     index:
-      title: 
-      header:
+      title: Mark exams
+      header: Exam list
       exam: Exam
       subject: Subject
-      user: User
-      date: Created Date
+      user: User Name
+      date: Exam Date
       status: Status
+      score: Score
   questions:
     form:
       subject: Subject
@@ -128,6 +132,13 @@ en:
     show:
       new_exam: New Exam
   trainee_exams:
+    trainee_exam:
+      passed: Passed
+      not_passed: Failed
+      not_marked: Not marked yet
+    edit:
+      trainee_answer: Trainee answer
+      submit: Mark
     new:
       title: Do exam
       remaining_time: Remaining Time

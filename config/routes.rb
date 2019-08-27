@@ -5,8 +5,7 @@ Rails.application.routes.draw do
     get "/signin", to: "sessions#new"
     post "/signin", to: "sessions#create"
     delete "/signout", to: "sessions#destroy"
-    resources :users, :subject, :questions, :exams
-    resources :trainee_exams, only: %i(index create new)
+    resources :users, :subject, :questions, :exams, :trainee_exams
     resources :mark_exams, only: :index
   end
 end

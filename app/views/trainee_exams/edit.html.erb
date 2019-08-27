@@ -1,0 +1,37 @@
+<% provide :title, @trainee_exam.exam.name %>
+<div class="container">
+  <div class="row">
+    <div class="">
+      <h1>
+        <%= @trainee_exam.exam.name %>
+      </h1>
+      <%= form_for @trainee_exam do |f|%>
+        <div class="quizcontainer">
+          <% @trainee_exam.detail_exams.each
+            .with_index(Settings.one) do |de, i| %>
+            <hr>
+            <div class="container question-content qtext">
+              <%= i %>.
+              <%= de.question.content %>
+            </div>
+            <% de.detail_exam_answers.each do |dea| %>
+              <% if dea.checked %>
+                <div class="answer-content correct-answer">
+                  <%= dea.answer.content %>
+                  <span class="answercomment">
+                    &nbsp;&nbsp;<%= t ".trainee_answer" %>&nbsp;&nbsp;
+                  </span>
+                </div>
+              <% else %>
+                <div class="answer-content">
+                  <%= dea.answer.content %>
+                </div>
+              <% end %>
+            <% end %>
+          <% end %>
+        </div>
+        <%= f.submit t(".submit"), class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>
+</div>
