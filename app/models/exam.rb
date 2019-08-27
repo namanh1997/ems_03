@@ -6,7 +6,8 @@ class Exam < ApplicationRecord
 
   belongs_to :subject
   has_many :trainee_exams
-  has_many :questions
+  has_many :exam_questions
+  has_many :questions, through: :exam_questions
 
   delegate :id, to: :subject, prefix: true
 
