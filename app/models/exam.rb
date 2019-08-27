@@ -16,6 +16,7 @@ class Exam < ApplicationRecord
     length: {maximum: Settings.maximum_length_name}
 
   validates :pass_score, presence: true
+  validates :total_score, presence: true
   validates :number_question, presence: true
   validates :time_limit, presence: true
 

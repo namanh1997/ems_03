@@ -1,0 +1,14 @@
+<tr>
+  <td>
+    <%= link_to trainee_exam.exam.subject.name %>
+  </td>
+  <td>
+    <%= link_to trainee_exam.exam.name %>
+  </td>
+  <td>
+    <%= link_to trainee_exam.user.name %>
+  </td>
+  <td>
+    <%= link_to trainee_exam.created_at.to_datetime.strftime("%T %d/%m/%y") %>
+  </td>
+</tr>

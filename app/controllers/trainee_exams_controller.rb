@@ -3,7 +3,15 @@ class TraineeExamsController < ApplicationController
 
   def index; end
 
-  def create; end
+  def create
+    if @trainee_exam.save
+      flash[:success] = t "submit_trainee_exam_successful"
+      redirect_to @question
+    else
+      flash.now[:danger] = t "submit_trainee_exam_failed"
+      render :new
+    end
+  end
 
   def new
     @remaining_time = Settings.remaining_time
@@ -17,5 +25,9 @@ class TraineeExamsController < ApplicationController
     return if @exam
     flash[:danger] = t ".no_exam"
     redirect_to root_path
+  end
+
+  def trainee_exam_params
+    params.require(:trainee_exam).permit TraineeExam::TRAINEE_EXAM_PARAMS
   end
 end

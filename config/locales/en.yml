@@ -8,8 +8,10 @@ en:
   create_subject_successful: Create subject successful
   create_user_successful: Create user successful
   create_user_failed: Failed to create user
-  create_question_successful: Create question successfull
+  create_question_successful: Create question successful
   create_question_failed: Failed to create question
+  submit_trainee_exam_successful: Submit exam successful
+  submit_trainee_exam_failed: Submit exam failed
   question_destroyed: Destroy question successfull
   question_destroyed_failed: Failed to destroy question
   question_update: Update question successful
@@ -35,6 +37,8 @@ en:
       title: Exam list
       header: Exam list
       new_exam: New exam
+    show:
+      correct_answer: Correct answer
   layouts:
     footer:
       english: English
@@ -48,6 +52,16 @@ en:
       settings: Settings
       profile: Profile
       users: Users
+      mark_exams: Mark Exams
+  mark_exams:
+    index:
+      title: 
+      header:
+      exam: Exam
+      subject: Subject
+      user: User
+      date: Created Date
+      status: Status
   questions:
     form:
       subject: Subject
@@ -155,8 +169,7 @@ en:
       previous: "&lsaquo; Prev"
       next: "Next &rsaquo;"
       truncate: "&hellip;"
-
-  trainee_exam:
+  trainee_exams:
     new:
       remaining_time: Remaining Time
       submit: Submit

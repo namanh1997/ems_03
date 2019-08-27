@@ -6,11 +6,21 @@
         <%= idx %>.
         <%= question.content %>
       </div>
-      <% question.answers.each do |answer| %>
-        <div class="radiocontainer answer-content">
-          <%= radio_button_tag idx, answer.content %>
-          <%= label_tag "#{idx}_#{answer.content}", answer.content %>
-        </div>
+      <% if question.single_choice? %>
+        <% question.answers.each do |answer| %>
+          <% @detail_exam_answer = @detail_exams %>
+          <div class="radiocontainer answer-content">
+            <%= f.radio_button :detail_exams.detail_exam_answer.checked, answer.content %>
+            <%= label_tag "#{idx}_#{answer.content}", answer.content %>
+          </div>
+        <% end %>
+      <% else %>
+        <% question.answers.each do |answer| %>
+          <div class="radiocontainer answer-content">
+            <%= f.check_box :detail_exams.detail_exam_answer.checked %>
+            <%= label_tag "#{idx}_#{answer.content}", answer.content %>
+          </div>
+        <% end %>
       <% end %>
     <% end %>
   </div>
