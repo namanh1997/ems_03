@@ -1,8 +1,8 @@
 class Exam < ApplicationRecord
-  attr_accessor :easy_question, :normal_question, :hard_question, :total_score
+  attr_accessor :easy_question, :normal_question, :hard_question
 
   EXAM_PARAMS = [:name, :time_limit, :pass_score, :number_question,
-    :subject_id].freeze
+    :subject_id, :total_score].freeze
 
   belongs_to :subject
   has_many :trainee_exams
@@ -19,6 +19,7 @@ class Exam < ApplicationRecord
 
   validates :time_limit, presence: true
   validates :pass_score, presence: true
+  validates :total_score, presence: true
   validates :number_question, presence: true
 
   def add_question question

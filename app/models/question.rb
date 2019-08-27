@@ -17,7 +17,8 @@ class Question < ApplicationRecord
     reject_if: proc{|attributes| attributes["content"].blank?}
 
   scope :sort_by_name, ->{order :content}
-  scope :get_by_id, ->(id){where id: id}
+  scope :get_by_level_and_subject,
+    ->(level, id){where level: level, subject_id: id}
 
   enum level: {easy: 0, normal: 1, hard: 2}
   enum question_type: {single_choice: 1, multi_choice: 2}
