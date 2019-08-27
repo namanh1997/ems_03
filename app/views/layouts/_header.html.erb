@@ -8,6 +8,7 @@
         <% if signed_in? %>
           <% if current_supervisor? %>
             <li><%= link_to t(".questions"), questions_path %></li>
+            <li><%= link_to t(".mark_exams"), mark_exams_path %></li>            
           <% end %>
           <li><%= link_to t(".users"), users_path %></li>
           <li class="dropdown">
