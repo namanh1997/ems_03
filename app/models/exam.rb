@@ -11,6 +11,8 @@ class Exam < ApplicationRecord
   delegate :id, :name, to: :subject, prefix: true
 
   scope :sort_by_name, ->{order :name}
+  scope :load_questions_answers,
+    ->(id){includes(questions: :answers).where(id: id).first}
 
   validates :name, presence: true,
     length: {maximum: Settings.maximum_length_name}

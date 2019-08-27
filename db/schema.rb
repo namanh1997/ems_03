@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2019_08_29_043832) do
   create_table "detail_exam_answers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "detail_exam_id"
     t.bigint "answer_id"
+    t.boolean "checked"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["answer_id"], name: "index_detail_exam_answers_on_answer_id"
