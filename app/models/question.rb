@@ -3,7 +3,8 @@ class Question < ApplicationRecord
   answers_attributes: [:id, :content, :correct, :_destroy]].freeze
 
   belongs_to :subject
-  belongs_to :exam, optional: true
+  has_many :exam_questions
+  has_many :exams, through: :exam_questions
   has_many :answers, dependent: :destroy
 
   delegate :name, to: :subject, prefix: true

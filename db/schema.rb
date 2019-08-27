@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_26_075341) do
+ActiveRecord::Schema.define(version: 2019_08_27_012644) do
 
   create_table "answers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "question_id"
@@ -30,6 +30,15 @@ ActiveRecord::Schema.define(version: 2019_08_26_075341) do
     t.datetime "updated_at", null: false
     t.index ["question_id"], name: "index_detail_exams_on_question_id"
     t.index ["trainee_exam_id"], name: "index_detail_exams_on_trainee_exam_id"
+  end
+
+  create_table "exam_questions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "exam_id"
+    t.bigint "question_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["exam_id"], name: "index_exam_questions_on_exam_id"
+    t.index ["question_id"], name: "index_exam_questions_on_question_id"
   end
 
   create_table "exams", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -88,6 +97,8 @@ ActiveRecord::Schema.define(version: 2019_08_26_075341) do
   add_foreign_key "answers", "questions"
   add_foreign_key "detail_exams", "questions"
   add_foreign_key "detail_exams", "trainee_exams"
+  add_foreign_key "exam_questions", "exams"
+  add_foreign_key "exam_questions", "questions"
   add_foreign_key "exams", "subjects"
   add_foreign_key "questions", "exams"
   add_foreign_key "questions", "subjects"
