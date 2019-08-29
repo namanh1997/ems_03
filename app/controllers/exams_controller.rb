@@ -1,5 +1,5 @@
 class ExamsController < ApplicationController
-  before_action :supervisor_user
+  before_action :supervisor_user, except: %i(index show)
   before_action :load_subject, only: %i(new index)
   before_action :load_subject_create, only: :create
 
@@ -10,9 +10,9 @@ class ExamsController < ApplicationController
 
   def create
     @exam = @subject.exams.build exam_params
-    @exam.number_question.times do
-      @exam.add_question(Question.get_by_id(@subject.id).sample)
-    end
+    add_questions
+    update_time_limit
+
     if @exam.save
       flash[:success] = t "create_exam_successful"
       redirect_to subject_index_path
@@ -30,13 +30,19 @@ class ExamsController < ApplicationController
   def edit; end
 
   def show
-    @exam = Exam.find_by(id: params[:id])
+    @exam = Exam.find_by id: params[:id]
     return if @exam
     flash[:danger] = t "no_exam"
     redirect_to root_path
   end
 
-  def update; end
+  def update
+    if @exam.update exam_params
+      redirect_to @exam
+    else
+      render :edit
+    end
+  end
 
   def destroy; end
 
@@ -47,6 +53,16 @@ class ExamsController < ApplicationController
     return if @subject
     flash[:danger] = t "no_subject"
     redirect_to subject_index_path
+  end
+
+  def add_questions
+    Exam::EXAM_TYPES.each do |type|
+      params[:exam][:"#{type}_question"].to_i.times do
+        @exam.add_question(Question.get_by_level_and_subject(
+          Question.levels[type], @subject.id
+        ).sample)
+      end
+    end
   end
 
   def load_subject_create
@@ -65,5 +81,10 @@ class ExamsController < ApplicationController
 
   def exam_params
     params.require(:exam).permit Exam::EXAM_PARAMS
+  end
+
+  def update_time_limit
+    @exam.time_limit = params[:exam][:hours].to_i * Settings.hours +
+                       params[:exam][:minutes].to_i * Settings.minutes
   end
 end

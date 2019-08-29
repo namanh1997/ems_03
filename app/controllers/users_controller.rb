@@ -4,12 +4,6 @@ class UsersController < ApplicationController
   before_action :correct_user, only: %i(edit update)
   before_action :supervisor_user, only: :destroy
 
-  def new
-    @user = User.new
-  end
-
-  def show; end
-
   def index
     @users = User.sort_by_name.page(params[:page]).per Settings.users_per_page
   end
@@ -25,16 +19,13 @@ class UsersController < ApplicationController
     end
   end
 
-  def destroy
-    if @user.destroy
-      flash[:success] = "user deleted"
-    else
-      flash.now[:danger] = t "delete_user_failed"
-    end
-    redirect_to users_path
+  def new
+    @user = User.new
   end
 
   def edit; end
+
+  def show; end
 
   def update
     if @user.update user_params
@@ -42,6 +33,15 @@ class UsersController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    if @user.destroy
+      flash[:success] = "user deleted"
+    else
+      flash.now[:danger] = t "delete_user_failed"
+    end
+    redirect_to users_path
   end
 
   private

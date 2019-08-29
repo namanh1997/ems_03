@@ -44,9 +44,10 @@ ActiveRecord::Schema.define(version: 2019_08_27_012644) do
   create_table "exams", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "subject_id"
     t.string "name"
-    t.time "time_limit"
+    t.integer "time_limit"
     t.integer "pass_score"
     t.integer "number_question"
+    t.integer "total_score"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["subject_id"], name: "index_exams_on_subject_id"
@@ -60,8 +61,6 @@ ActiveRecord::Schema.define(version: 2019_08_27_012644) do
     t.integer "level", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "exam_id"
-    t.index ["exam_id"], name: "index_questions_on_exam_id"
     t.index ["subject_id"], name: "index_questions_on_subject_id"
   end
 
@@ -75,7 +74,7 @@ ActiveRecord::Schema.define(version: 2019_08_27_012644) do
     t.bigint "exam_id"
     t.bigint "user_id"
     t.integer "total_score"
-    t.time "complete_time"
+    t.integer "complete_time"
     t.boolean "is_passed"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -100,7 +99,6 @@ ActiveRecord::Schema.define(version: 2019_08_27_012644) do
   add_foreign_key "exam_questions", "exams"
   add_foreign_key "exam_questions", "questions"
   add_foreign_key "exams", "subjects"
-  add_foreign_key "questions", "exams"
   add_foreign_key "questions", "subjects"
   add_foreign_key "trainee_exams", "exams"
   add_foreign_key "trainee_exams", "users"

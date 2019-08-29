@@ -1,15 +1,4 @@
 class SubjectController < ApplicationController
-  def new
-    @subject = Subject.new
-  end
-
-  def show
-    @subject = Subject.find_by(id: params[:id])
-    return if @subject
-    flash[:danger] = t "no_subject"
-    redirect_to root_path
-  end
-
   def index
     @subjects = Subject.sort_by_name.page(params[:page])
                        .per Settings.subjects_per_page
@@ -24,6 +13,17 @@ class SubjectController < ApplicationController
       flash.now[:danger] = t "create_subject_failed"
       render :new
     end
+  end
+
+  def new
+    @subject = Subject.new
+  end
+
+  def show
+    @subject = Subject.find_by(id: params[:id])
+    return if @subject
+    flash[:danger] = t "no_subject"
+    redirect_to root_path
   end
 
   private
