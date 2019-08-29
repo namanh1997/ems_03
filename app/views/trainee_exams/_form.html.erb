@@ -1,0 +1,18 @@
+<%= form_for @trainee_exam do |f| %>
+  <div class="container">
+    <% @exam.questions.each.with_index(Settings.one) do |question, idx| %>
+      <hr>
+      <div class="container question-content">
+        <%= idx %>.
+        <%= question.content %>
+      </div>
+      <% question.answers.each do |answer| %>
+        <div class="radiocontainer answer-content">
+          <%= radio_button_tag idx, answer.content %>
+          <%= label_tag "#{idx}_#{answer.content}", answer.content %>
+        </div>
+      <% end %>
+    <% end %>
+  </div>
+  <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+<% end %>

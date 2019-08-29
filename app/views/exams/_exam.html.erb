@@ -1,3 +1,7 @@
 <li>
-  <%= link_to exam.name, exam %>
+  <% if current_supervisor? %>
+    <%= link_to exam.name, exam %>
+  <% else %>
+    <%= link_to exam.name, new_trainee_exam_path(exam_id: exam.id) %>
+  <% end %>
 </li>
