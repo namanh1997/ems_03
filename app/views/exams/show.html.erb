@@ -1,10 +1,23 @@
 <% provide :title, @exam.name %>
 <div class="container">
   <div class="row">
-    <div class="col-md-8 col-md-offset-2">
+    <div class="col-md-10 col-md-offset-1">
       <h1>
         <%= @exam.name %>
       </h1>
+      <div class="container">
+        <% @exam.questions.each.with_index(Settings.one) do |question, idx| %>
+          <div class="container question-content">
+            <%= idx %>.
+            <%= question.content %>
+          </div>
+          <% question.answers.each do |answer| %>
+            <div class="container answer-content">
+              <%= answer.content %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
