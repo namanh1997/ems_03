@@ -1,28 +1,41 @@
 <%= form_for @trainee_exam do |f| %>
   <div class="container">
-    <% @exam.questions.each.with_index(Settings.one) do |question, idx| %>
-      <hr>
-      <div class="container question-content">
-        <%= idx %>.
-        <%= question.content %>
-      </div>
-      <% if question.single_choice? %>
-        <% question.answers.each do |answer| %>
-          <% @detail_exam_answer = @detail_exams %>
-          <div class="radiocontainer answer-content">
-            <%= f.radio_button :detail_exams.detail_exam_answer.checked, answer.content %>
-            <%= label_tag "#{idx}_#{answer.content}", answer.content %>
-          </div>
+    <%= f.hidden_field :complete_time, value: @remaining_time %>
+    <div class="timer">
+      <h4><%= t ".remaining_time"%></h4>
+      <div id="clock"></div>
+    </div>
+  </div>
+  <%= f.fields_for :detail_exams do |de| %>
+    <%= de.hidden_field :question_id, value: de.object.question.id %>
+    <hr>
+    <div class="container question-content">
+      <%= de.index + 1 %>.
+      <%= de.object.question.content %>
+      <% if de.object.question.single_choice? %>
+        <%= de.fields_for :detail_exam_answers do |dea| %>
+          <label class="radiocontainer answer-content">
+            <%= dea.hidden_field :answer_id, value: dea.object.answer.id %>
+            <%= dea.hidden_field :checked, value: "0" %>
+            <%= dea.radio_button :checked, dea.object.answer.content,
+              class: "answer-radiobutton"%>
+            <%= dea.object.answer.content %>
+          </label>
         <% end %>
       <% else %>
-        <% question.answers.each do |answer| %>
-          <div class="radiocontainer answer-content">
-            <%= f.check_box :detail_exams.detail_exam_answer.checked %>
-            <%= label_tag "#{idx}_#{answer.content}", answer.content %>
-          </div>
+        <%= de.fields_for :detail_exam_answers do |dea| %>
+          <label class="radiocontainer answer-content">
+            <%= dea.hidden_field :answer_id, value: dea.object.answer.id %>
+            <%= dea.check_box :checked, id: "answer[#{de.index}][#{dea.index}]",
+              name: "trainee_exam[detail_exams_attributes][#{de.index}]"\
+              "[detail_exam_answers][#{dea.index}][checked]",
+              class: "answer-checkbox" %>
+            <%= dea.object.answer.content %>
+          </label>
         <% end %>
       <% end %>
-    <% end %>
-  </div>
+    </div>
+  <% end %>
+  <%= f.hidden_field :exam_id, value: @exam.id %>
   <%= f.submit yield(:button_text), class: "btn btn-primary" %>
 <% end %>
