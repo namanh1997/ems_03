@@ -1,7 +1,7 @@
 class TraineeExam < ApplicationRecord
-  TRAINEE_EXAM_PARAMS = [:complete_time, :exam_id,
-    detail_exams_attributes: [:question_id,
-    detail_exam_answers_attributes: [:checked, :answer_id, :id]]].freeze
+  TRAINEE_EXAM_PARAMS = [:id, :complete_time, :exam_id,
+  detail_exams_attributes: [:question_id,
+  detail_exam_answers_attributes: [:checked, :answer_id, :id]]].freeze
   belongs_to :exam
   belongs_to :user
   has_many :detail_exams, dependent: :destroy

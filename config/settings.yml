@@ -16,3 +16,14 @@ minutes: 60
 questions: 10
 one: 1
 trainee_exams_per_page: 15
+zero: 0
+factories:
+  question:
+    supervisor_id: 1
+  exam:
+    time_limit: 10
+    pass_score: 3
+    total_score: 6
+    number_question: 3
+    name_max_length: 50
+    name_invalid_length: 51

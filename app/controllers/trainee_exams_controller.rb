@@ -1,5 +1,6 @@
 class TraineeExamsController < ApplicationController
-  before_action :load_exam_new, only: :new
+  before_action :load_exam_new, :signed_in_user, only: %i(new do_exam)
+  before_action :load_trainee_exam_new, only: :do_exam
   before_action :load_exam_create, only: :create
   before_action :supervisor_user, only: %i(edit update)
   before_action :load_trainee_exam, only: %i(edit show update)
@@ -8,8 +9,9 @@ class TraineeExamsController < ApplicationController
   def index; end
 
   def create
-    @trainee_exam = current_user.trainee_exams.build trainee_exam_params
-    if @trainee_exam.save
+    @trainee_exam.complete_time = Time.now.to_i -
+                                  @trainee_exam.created_at.to_i
+    if @trainee_exam.update trainee_exam_params
       flash[:success] = t "submit_trainee_exam_successful"
       redirect_to root_url
     else
@@ -19,14 +21,24 @@ class TraineeExamsController < ApplicationController
   end
 
   def new
-    @remaining_time = @exam.time_limit
     @trainee_exam = current_user.trainee_exams.build exam_id: params[:exam_id]
-    load_questions_answers
+    if @trainee_exam.save
+      flash.now[:success] = t "submit_trainee_exam_successful"
+      redirect_to do_exam_path(trainee_exam_id: @trainee_exam.id,
+        exam_id: params[:exam_id])
+    else
+      flash.now[:danger] = t "submit_trainee_exam_failed"
+      render :new
+    end
   end
 
   def edit; end
 
-  def show; end
+  def do_exam
+    @remaining_time = @exam.time_limit - (Time.now.to_i -
+      @trainee_exam.created_at.to_i)
+    load_questions_answers
+  end
 
   def update
     respond_to do |f|
@@ -48,9 +60,16 @@ class TraineeExamsController < ApplicationController
   private
 
   def load_exam_new
-    @exam = Exam.load_questions_answers params[:exam_id]
+    @exam = Exam.load_detail params[:exam_id]
     return if @exam
     flash[:danger] = t "no_exam"
+    redirect_to root_path
+  end
+
+  def load_trainee_exam_new
+    @trainee_exam = TraineeExam.trainee_exam_result params[:trainee_exam_id]
+    return if @trainee_exam
+    flash[:danger] = t ".no_exam"
     redirect_to root_path
   end
 
