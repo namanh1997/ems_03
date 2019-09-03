@@ -230,7 +230,7 @@ aside {
   word-wrap: break-word;
 
   &:hover{
-    background-color: $hover-color;
+    background-color: $whiteddd;
   }
 }
 
@@ -254,7 +254,7 @@ aside {
 }
 
 .answer-content.correct-answer{
-  background-color: $answer-correct-background;
+  background-color: $whiteddd;
 }
 
 .answercomment {
@@ -264,4 +264,8 @@ aside {
   position: absolute;
   right: 10px;
   top: 10px;
+}
+
+.checkedlabel {
+  background-color: $whiteddd;
 }
