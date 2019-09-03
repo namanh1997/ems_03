@@ -14,4 +14,14 @@ class TraineeExam < ApplicationRecord
 
   accepts_nested_attributes_for :detail_exams,
     allow_destroy: true
+
+  def self.trainee_edit id
+    TraineeExam.includes(:exam, detail_exams: [{detail_exam_answers: :answer},
+      :question]).where(id: id).first
+  end
+
+  def self.trainee_upadate id
+    TraineeExam.includes(detail_exams: {detail_exam_answers: :answer})
+               .where(id: id).first
+  end
 end
