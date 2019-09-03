@@ -127,10 +127,10 @@ en:
       create: Create new subject
     show:
       new_exam: New Exam
-  do_exam:
+  trainee_exams:
     new:
       title: Do exam
-      header: Do exam
+      remaining_time: Remaining Time
       submit: Submit
   users:
     index:
@@ -169,7 +169,6 @@ en:
       previous: "&lsaquo; Prev"
       next: "Next &rsaquo;"
       truncate: "&hellip;"
-  trainee_exams:
-    new:
-      remaining_time: Remaining Time
-      submit: Submit
+  time:
+    formats:
+      date_time: "%T %d/%m/%y"

@@ -6,9 +6,11 @@ class TraineeExam < ApplicationRecord
   belongs_to :user
   has_many :detail_exams, dependent: :destroy
 
-  scope :sort_by_subject_and_name, ->{order created_at: :desc}
+  scope :sort_by_subject_and_name,
+    ->{includes({exam: :subject}, :user).order(created_at: :desc)}
 
-  validates :complete_time, presence: true
+  delegate :subject_name, :name, to: :exam, prefix: true
+  delegate :name, to: :user, prefix: true
 
   accepts_nested_attributes_for :detail_exams,
     allow_destroy: true

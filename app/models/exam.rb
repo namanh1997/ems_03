@@ -8,7 +8,7 @@ class Exam < ApplicationRecord
   has_many :exam_questions
   has_many :questions, through: :exam_questions
 
-  delegate :id, to: :subject, prefix: true
+  delegate :id, :name, to: :subject, prefix: true
 
   scope :sort_by_name, ->{order :name}
   scope :load_questions_answers,

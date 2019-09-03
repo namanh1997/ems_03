@@ -95,7 +95,7 @@ end
     pass = Random.new
     num_q = easy_q + normal_q + hard_q
     exam = subject.exams.create!(
-      name: Faker::Name.unique.name,
+      name: Faker::Book.unique.title,
       time_limit: 60.minutes.to_i,
       number_question: num_q,
       pass_score: pass.rand(1..total_score),
