@@ -3,8 +3,13 @@
     <%= trainee_exam.exam_subject_name %>
   </td>
   <td>
-    <%= link_to trainee_exam.exam_name,
-      edit_trainee_exam_path(id: trainee_exam.id) %>
+    <% if current_supervisor? %>
+      <%= link_to trainee_exam.exam_name,
+        edit_trainee_exam_path(trainee_exam) %>
+    <% else %>
+      <%= link_to trainee_exam.exam_name,
+        trainee_exam_path(trainee_exam) %>
+    <% end %>
   </td>
   <td>
     <%= trainee_exam.user_name %>
@@ -16,12 +21,16 @@
     <%= trainee_exam.total_score %>
   </td>
   <td>
-    <% if trainee_exam.is_passed == nil %>
+    <% if trainee_exam.is_passed.nil? %>
      <%= t ".not_marked" %>
     <% elsif trainee_exam.is_passed? %>
      <%= t ".passed" %>
     <% else %>
      <%= t ".not_passed" %>
     <% end %>
+  </td>
+  <td>
+    <%= link_to t(".mark"), trainee_exam_path(trainee_exam),
+      class: "btn btn-primary", method: :patch %>
   </td>
 </tr>

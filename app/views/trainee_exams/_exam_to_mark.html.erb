@@ -1,0 +1,33 @@
+<div class="quizcontainer">
+  <% exam_to_mark.detail_exams.each
+    .with_index(Settings.one) do |de, i| %>
+    <hr>
+    <div class="container question-content qtext">
+      <%= i %>.
+      <%= de.question_content %>
+      <span class="float-right">
+        <%= t ".score" %>
+        <%= question_level de.question_level %>
+      </span>
+      <span class="float-right">
+        <%= t ".difficulty" %>
+        <%= de.question_level %>
+        &nbsp;&nbsp;
+      </span>
+    </div>
+    <% de.detail_exam_answers.each do |dea| %>
+      <% if dea.checked %>
+        <div class="answer-content checkedlabel">
+          <%= dea.answer_content %>
+          <span class="answercomment">
+            &nbsp;&nbsp;<%= t ".trainee_answer" %>&nbsp;&nbsp;
+          </span>
+        </div>
+      <% else %>
+        <div class="answer-content">
+          <%= dea.answer_content %>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>

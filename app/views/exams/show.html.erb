@@ -1,33 +1,50 @@
 <% provide :title, @exam.name %>
 <div class="container">
   <div class="row">
-    <div class="">
-      <h1>
-        <%= @exam.name %>
-      </h1>
-      <div class="quizcontainer">
-        <% @exam.questions.each.with_index(Settings.one) do |question, i| %>
-          <hr>
-          <div class="container question-content qtext">
-            <%= i %>.
-            <%= question.content %>
-          </div>
-          <% question.answers.each do |answer| %>
-            <% if answer.correct == true %>
-              <div class="answer-content correct-answer">
-                <%= answer.content %>
-                <span class="answercomment">
-                  &nbsp;&nbsp;<%= t ".correct_answer" %>&nbsp;&nbsp;
-                </span>
-              </div>
-            <% else %>  
-              <div class="answer-content">
-                <%= answer.content %>
-              </div>
-            <% end %>
+    <h1><%= @exam.name %></h1>
+    <p><%= t ".subject", subject: @exam.subject_name %></p>
+    <p><%= t ".total_score", total: @exam.total_score %></p>
+    <p><%= t ".pass_score", pass: @exam.pass_score %></p>
+    <p>
+      <%= t ".time_limit" %>
+      <%= l Time.at(@exam.time_limit).utc, format: :exam_time %>
+    </p>
+    <p><%= t ".questions", questions: @exam.number_question %></p>
+    <p>
+      <%= t ".created" %>
+      <%= l Time.at(@exam.created_at), format: :date_time %>
+    </p>
+    <div class="quizcontainer">
+      <% @exam.questions.each.with_index(Settings.one) do |question, i| %>
+        <hr>
+        <div class="container question-content qtext">
+          <%= i %>.
+          <%= question.content %>
+          <span class="float-right">
+            <%= t ".score" %>
+            <%= question_level question.level %>
+          </span>
+          <span class="float-right">
+            <%= t ".difficulty" %>
+            <%= question.level %>
+            &nbsp;&nbsp;
+          </span>
+        </div>
+        <% question.answers.each do |answer| %>
+          <% if answer.correct %>
+            <div class="answer-content correct-answer">
+              <%= answer.content %>
+              <span class="answercomment">
+                &nbsp;&nbsp;<%= t ".correct_answer" %>&nbsp;&nbsp;
+              </span>
+            </div>
+          <% else %>  
+            <div class="answer-content">
+              <%= answer.content %>
+            </div>
           <% end %>
         <% end %>
-      </div>
+      <% end %>
     </div>
   </div>
 </div>

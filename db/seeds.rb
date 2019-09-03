@@ -29,7 +29,8 @@ Subject.create!([{name: "Ruby"},
   {name: "Javascript"}
 ])
 
-subjects = Subject.order(:created_at).take(5)
+subjects = Subject.includes(exams: {questions: :answers})
+  .order(:created_at).take(5)
 q_type_rand = Random.new
 level = Random.new
 100.times do
@@ -37,11 +38,11 @@ level = Random.new
     qcontent = Faker::Lorem.unique.question(word_count: 5)
     q_type = q_type_rand.rand(1..2)
     if q_type == Question.question_types[:single_choice]
-      question = subject.questions.create!(
+      subject.questions.create!(
         content: qcontent,
         supervisor_id: 1,
         question_type: q_type,
-        level: level.rand(3),
+        level: level.rand(1..3),
         answers_attributes: [{
           content: Faker::Food.fruits,
           correct: true
@@ -60,11 +61,11 @@ level = Random.new
         }]
       )
     elsif q_type == Question.question_types[:multi_choice]
-        question = subject.questions.create!(
+        subject.questions.create!(
           content: qcontent,
           supervisor_id: 1,
           question_type: q_type,
-          level: level.rand(3),
+          level: level.rand(1..3),
           answers_attributes: [{
             content: Faker::Food.fruits,
             correct: true
@@ -113,28 +114,39 @@ end
   end
 end
 
-exams = Exam.order(:created_at).take(5)
-users = User.where(role: 0).take(10)
+exams = Exam.includes(questions: :answers).order(:created_at).take(5)
+users = User.where(role: 0).pluck(:id)
 5.times do
   exams.each do |exam|
-    score =  Random.new.rand(exam.total_score.to_i)
     t_exam = exam.trainee_exams.create!(
-      user_id: users.sample.id,
-      complete_time: Random.new.rand(exam.time_limit.to_i),
-      is_passed: (score >= exam.pass_score)
+      user_id: users.sample,
+      complete_time: Random.new.rand(exam.time_limit.to_i)
     )
     exam.questions.each do |question|
       num_answers = question.answers.size
       if question.single_choice?
-        t_exam.detail_exams.create!(
-          trainee_exam_id: t_exam.id,
-          question_id: question.id,
-        ).answers << question.answers.sample
+        de = t_exam.detail_exams.create!(question_id: question.id)
+        question.answers.each_with_index do |answer, i|
+          if i == 0
+            de.detail_exam_answers.create!(
+              answer_id: answer.id,
+              checked: true
+            )
+          else
+            de.detail_exam_answers.create!(
+              answer_id: answer.id,
+              checked: false
+            )
+          end
+        end
       elsif question.multi_choice?
-        t_exam.detail_exams.create!(
-          trainee_exam_id: t_exam.id,
-          question_id: question.id,
-        ).answers << question.answers.sample(Random.new.rand(num_answers-1))
+        de = t_exam.detail_exams.create!(question_id: question.id)
+        question.answers.each do |answer|
+          de.detail_exam_answers.create!(
+            answer_id: answer.id,
+            checked: Faker::Boolean.boolean
+          )
+        end
       end
     end
   end

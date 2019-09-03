@@ -1,6 +1,8 @@
 en:
   exam_online: Exam Online
   pleaselogin: Please login!
+  hello: Hello %{user_name}
+  invalid: Invalid email/password combination
   no_user: User doesn't exist
   no_subject: Subject doesn't exist
   no_question: Question doesn't exist
@@ -41,7 +43,15 @@ en:
       header: Exam list
       new_exam: New exam
     show:
+      subject: "Subject: %{subject}"
+      total_score: "Total score: %{total}"
+      pass_score: "Pass score: %{pass}"
+      time_limit: "Time limit: "
+      questions: "Number of questions: %{questions}"
+      created: "Created date: "
       correct_answer: Correct answer
+      difficulty: "Difficulty: "
+      score: "Score: "
   layouts:
     footer:
       english: English
@@ -66,6 +76,8 @@ en:
       date: Exam Date
       status: Status
       score: Score
+      action: Action
+      mark: Mark
   questions:
     form:
       subject: Subject
@@ -106,8 +118,6 @@ en:
     new:
       title: Sign in
       signin: Sign in
-    create:
-      invalid: Invalid email/password combination
   shared:
     error_messages:
       form: The form contains
@@ -132,17 +142,31 @@ en:
     show:
       new_exam: New Exam
   trainee_exams:
+    exam_to_mark:
+      difficulty: "Difficulty: "
+      score: "Score: "
+      trainee_answer: Trainee answer
+    marked_exam:
+      total_score: "Total score: %{current} of %{total}"
+      total_correct: "Correct: %{current} of %{total} questions"
+      pass_score: "Pass score: %{pass}"
+      difficulty: "Difficulty: "
+      score: "Score: "
+      trainee_answer: Trainee answer
+      correct_answer: Correct answer
     trainee_exam:
       passed: Passed
       not_passed: Failed
       not_marked: Not marked yet
     edit:
-      trainee_answer: Trainee answer
       submit: Mark
     new:
       title: Do exam
       remaining_time: Remaining Time
       submit: Submit
+    show:
+      trainee_answer: Trainee answer
+      correct_answer: Correct answer
   users:
     index:
       title: Users
@@ -183,3 +207,4 @@ en:
   time:
     formats:
       date_time: "%T %d/%m/%y"
+      exam_time: "%T"

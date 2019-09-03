@@ -2,9 +2,8 @@ class TraineeExamsController < ApplicationController
   before_action :load_exam_new, only: :new
   before_action :load_exam_create, only: :create
   before_action :supervisor_user, only: %i(edit update)
-  before_action :load_trainee_exam_edit, only: :edit
-  before_action :load_trainee_exam_update, :check_score,
-    :check_pass, only: :update
+  before_action :load_trainee_exam, only: %i(edit show update)
+  before_action :check_score, :check_pass, only: :update
 
   def index; end
 
@@ -43,7 +42,7 @@ class TraineeExamsController < ApplicationController
   def load_exam_new
     @exam = Exam.load_questions_answers params[:exam_id]
     return if @exam
-    flash[:danger] = t ".no_exam"
+    flash[:danger] = t "no_exam"
     redirect_to root_path
   end
 
@@ -54,15 +53,8 @@ class TraineeExamsController < ApplicationController
     redirect_to root_path
   end
 
-  def load_trainee_exam_edit
-    @trainee_exam = TraineeExam.trainee_edit params[:id]
-    return if @trainee_exam
-    flash[:danger] = t "no_trainee_exam"
-    redirect_to root_path
-  end
-
-  def load_trainee_exam_update
-    @trainee_exam = TraineeExam.trainee_upadate params[:id]
+  def load_trainee_exam
+    @trainee_exam = TraineeExam.trainee_exam_result params[:id]
     return if @trainee_exam
     flash[:danger] = t "no_trainee_exam"
     redirect_to root_path

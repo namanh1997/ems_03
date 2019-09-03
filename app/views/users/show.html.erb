@@ -9,3 +9,27 @@
     </section>
   </aside>
 </div>
+
+<% unless current_supervisor? %>
+  <div class="container">
+    <div class="trainee-exams">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th scope="col"><%= t ".subject" %></th>
+            <th scope="col"><%= t ".exam" %></th>
+            <th scope="col"><%= t ".user" %></th>
+            <th scope="col"><%= t ".date" %></th>
+            <th scope="col"><%= t ".score" %></th>
+            <th scope="col"><%= t ".status" %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render @trainee_exams %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <%= paginate @trainee_exams, theme: "twitter-bootstrap-3" %>
+<% end %>

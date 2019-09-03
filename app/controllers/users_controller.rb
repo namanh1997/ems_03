@@ -25,7 +25,10 @@ class UsersController < ApplicationController
 
   def edit; end
 
-  def show; end
+  def show
+    @trainee_exams = TraineeExam.get_by_user(@user.id).page(params[:page])
+                                .per Settings.trainee_exams_per_page
+  end
 
   def update
     if @user.update user_params
@@ -49,7 +52,7 @@ class UsersController < ApplicationController
   def load_user
     @user = User.find_by id: params[:id]
     return if @user
-    flash[:danger] = t ".no_user"
+    flash[:danger] = t "no_user"
     redirect_to root_path
   end
 

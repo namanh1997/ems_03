@@ -35,7 +35,7 @@ textarea {
 
 /* typography */
 h1, h2, h3, h4, h5, h6 {
-  line-height: 1;
+  line-height: 1.5;
 }
 
 h1 {
@@ -234,8 +234,13 @@ aside {
   }
 }
 
+.markcontainer {
+  position:absolute;
+  left:15px;
+}
+
 .quizcontainer{
-  padding:0 20px 40px 0;
+  padding:0 0 40px 0;
 }
 
 .question-content{
@@ -253,19 +258,39 @@ aside {
   word-wrap: break-word;
 }
 
+.checkedlabel {
+  background-color: $whiteddd;
+}
+
 .answer-content.correct-answer{
   background-color: $whiteddd;
 }
 
+.answer-content.correct.chosen-answer {
+  background-color: $answer-correct-background;
+}
+
+.answer-content.wrong {
+  background-color: $answer-wrong-background;
+}
+
 .answercomment {
   background-color: $answer-comment-background;
-  color:white;
+  color: $white;
   white-space: nowrap;
   position: absolute;
   right: 10px;
   top: 10px;
 }
 
-.checkedlabel {
-  background-color: $whiteddd;
+.glyphicon-ok, .glyphicon-remove{
+  line-height: 1.3;
+}
+
+.glyphicon-ok{
+  color: $green;
+}
+
+.glyphicon-remove{
+  color: $red;
 }

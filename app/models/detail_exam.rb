@@ -6,4 +6,6 @@ class DetailExam < ApplicationRecord
 
   accepts_nested_attributes_for :detail_exam_answers,
     allow_destroy: true
+
+  delegate :level, :content, to: :question, prefix: true
 end
