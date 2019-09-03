@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_08_27_012644) do
+ActiveRecord::Schema.define(version: 2019_08_29_043832) do
 
   create_table "answers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "question_id"
@@ -21,10 +21,18 @@ ActiveRecord::Schema.define(version: 2019_08_27_012644) do
     t.index ["question_id"], name: "index_answers_on_question_id"
   end
 
+  create_table "detail_exam_answers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "detail_exam_id"
+    t.bigint "answer_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["answer_id"], name: "index_detail_exam_answers_on_answer_id"
+    t.index ["detail_exam_id"], name: "index_detail_exam_answers_on_detail_exam_id"
+  end
+
   create_table "detail_exams", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "trainee_exam_id"
     t.bigint "question_id"
-    t.integer "answer"
     t.boolean "is_result"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -46,8 +54,8 @@ ActiveRecord::Schema.define(version: 2019_08_27_012644) do
     t.string "name"
     t.integer "time_limit"
     t.integer "pass_score"
-    t.integer "number_question"
     t.integer "total_score"
+    t.integer "number_question"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["subject_id"], name: "index_exams_on_subject_id"
@@ -94,6 +102,8 @@ ActiveRecord::Schema.define(version: 2019_08_27_012644) do
   end
 
   add_foreign_key "answers", "questions"
+  add_foreign_key "detail_exam_answers", "answers"
+  add_foreign_key "detail_exam_answers", "detail_exams"
   add_foreign_key "detail_exams", "questions"
   add_foreign_key "detail_exams", "trainee_exams"
   add_foreign_key "exam_questions", "exams"

@@ -8,7 +8,7 @@ class Exam < ApplicationRecord
   has_many :exam_questions
   has_many :questions, through: :exam_questions
 
-  delegate :id, to: :subject, prefix: true
+  delegate :id, :name, to: :subject, prefix: true
 
   scope :sort_by_name, ->{order :name}
 
@@ -16,6 +16,7 @@ class Exam < ApplicationRecord
     length: {maximum: Settings.maximum_length_name}
 
   validates :pass_score, presence: true
+  validates :total_score, presence: true
   validates :number_question, presence: true
   validates :time_limit, presence: true
 

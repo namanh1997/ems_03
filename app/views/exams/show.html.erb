@@ -1,23 +1,34 @@
 <% provide :title, @exam.name %>
 <div class="container">
   <div class="row">
-    <div class="col-md-10 col-md-offset-1">
+    <div class="">
       <h1>
         <%= @exam.name %>
       </h1>
-      <div class="container">
-        <% @exam.questions.each.with_index(Settings.one) do |question, idx| %>
-          <div class="container question-content">
-            <%= idx %>.
+      <div class="quizcontainer">
+        <% @exam.questions.each.with_index(Settings.one) do |question, i| %>
+          <hr>
+          <div class="container question-content qtext">
+            <%= i %>.
             <%= question.content %>
           </div>
           <% question.answers.each do |answer| %>
-            <div class="container answer-content">
-              <%= answer.content %>
-            </div>
+            <% if answer.correct == true %>
+              <div class="answer-content correct-answer">
+                <%= answer.content %>
+                <span class="answercomment">
+                  &nbsp;&nbsp;<%= t ".correct_answer" %>&nbsp;&nbsp;
+                </span>
+              </div>
+            <% else %>  
+              <div class="answer-content">
+                <%= answer.content %>
+              </div>
+            <% end %>
           <% end %>
         <% end %>
       </div>
     </div>
   </div>
 </div>
+ 

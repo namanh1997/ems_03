@@ -35,6 +35,8 @@ en:
       title: Exam list
       header: Exam list
       new_exam: New exam
+    show:
+      correct_answer: Correct answer
   layouts:
     footer:
       english: English
@@ -48,6 +50,16 @@ en:
       settings: Settings
       profile: Profile
       users: Users
+      mark_exams: Mark Exams
+  mark_exams:
+    index:
+      title: 
+      header:
+      exam: Exam
+      subject: Subject
+      user: User
+      date: Created Date
+      status: Status
   questions:
     form:
       subject: Subject
@@ -113,10 +125,10 @@ en:
       create: Create new subject
     show:
       new_exam: New Exam
-  do_exam:
+  trainee_exam:
     new:
       title: Do exam
-      header: Do exam
+      remaining_time: Remaining Time
       submit: Submit
   users:
     index:
@@ -155,8 +167,6 @@ en:
       previous: "&lsaquo; Prev"
       next: "Next &rsaquo;"
       truncate: "&hellip;"
-
-  trainee_exam:
-    new:
-      remaining_time: Remaining Time
-      submit: Submit
+  time:
+    formats:
+      date_time: "%T %d/%m/%y"

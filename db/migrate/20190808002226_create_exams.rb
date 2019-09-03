@@ -5,8 +5,8 @@ class CreateExams < ActiveRecord::Migration[5.2]
       t.string :name
       t.integer :time_limit
       t.integer :pass_score
-      t.integer :number_question
       t.integer :total_score
+      t.integer :number_question
 
       t.timestamps
     end
