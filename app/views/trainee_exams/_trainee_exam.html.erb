@@ -17,10 +17,10 @@
   <td>
     <%= l trainee_exam.created_at, format: :date_time %>
   </td>
-   <td>
+  <td id="score-<%=trainee_exam.id%>">
     <%= trainee_exam.total_score %>
   </td>
-  <td>
+  <td id="check-<%=trainee_exam.id%>">
     <% if trainee_exam.is_passed.nil? %>
      <%= t ".not_marked" %>
     <% elsif trainee_exam.is_passed? %>
@@ -29,8 +29,12 @@
      <%= t ".not_passed" %>
     <% end %>
   </td>
-  <td>
-    <%= link_to t(".mark"), trainee_exam_path(trainee_exam),
-      class: "btn btn-primary", method: :patch %>
+  <td id="mark-<%=trainee_exam.id%>">
+    <% if trainee_exam.is_passed.nil? %>
+      <%= link_to t(".mark"), trainee_exam_path(trainee_exam),
+        class: "btn btn-primary", method: :patch, remote: true %>
+    <% else %>
+      <%= t ".marked" %>
+    <% end %>
   </td>
 </tr>

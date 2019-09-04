@@ -10,4 +10,12 @@ module TraineeExamsHelper
   def question_level key
     Question.levels[key]
   end
+
+  def question_score detail_exam
+    if detail_exam.is_result?
+      Question.levels[detail_exam.question.level]
+    else
+      0
+    end
+  end
 end

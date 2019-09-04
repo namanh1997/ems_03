@@ -151,13 +151,14 @@ en:
       total_correct: "Correct: %{current} of %{total} questions"
       pass_score: "Pass score: %{pass}"
       difficulty: "Difficulty: "
-      score: "Score: "
+      score: "Score: %{current}/%{total}"
       trainee_answer: Trainee answer
       correct_answer: Correct answer
     trainee_exam:
       passed: Passed
       not_passed: Failed
       not_marked: Not marked yet
+      marked: Marked
     edit:
       submit: Mark
     new:
@@ -167,6 +168,11 @@ en:
     show:
       trainee_answer: Trainee answer
       correct_answer: Correct answer
+    update:
+      passed: Passed
+      not_passed: Failed
+      not_marked: Not marked yet
+      marked: Marked
   users:
     index:
       title: Users

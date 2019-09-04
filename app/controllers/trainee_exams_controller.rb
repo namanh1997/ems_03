@@ -29,12 +29,20 @@ class TraineeExamsController < ApplicationController
   def show; end
 
   def update
-    if @trainee_exam.save
-      flash[:success] = t "trainee_exam_marked"
-    else
-      flash[:danger] = t "trainee_exam_marked_failed"
+    respond_to do |f|
+      if @trainee_exam.save
+        f.html do
+          flash[:success] = t "trainee_exam_marked"
+          redirect_to mark_exams_path
+        end
+        f.js
+      else
+        f.html do
+          flash[:danger] = t "trainee_exam_marked_failed"
+          redirect_to mark_exams_path
+        end
+      end
     end
-    redirect_to mark_exams_path
   end
 
   private

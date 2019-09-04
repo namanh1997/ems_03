@@ -11,8 +11,8 @@
       <%= i %>.
       <%= de.question_content %>
       <span class="float-right">
-        <%= t ".score" %>
-        <%= question_level de.question_level %>
+        <%= t ".score", current: question_score(de),
+          total: question_level(de.question.level) %>
       </span>
       <span class="float-right">
         <%= t ".difficulty" %>
