@@ -22,7 +22,7 @@ class Question < ApplicationRecord
   scope :get_by_level_and_subject,
     ->(level, id){where("level = ? and subject_id = ?", level, id)}
 
-  enum level: {easy: 0, normal: 1, hard: 2}
+  enum level: {easy: 1, normal: 2, hard: 3}
   enum question_type: {single_choice: 1, multi_choice: 2}
 
   validates :content, presence: true,

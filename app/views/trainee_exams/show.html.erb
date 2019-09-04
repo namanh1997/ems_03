@@ -5,14 +5,11 @@
       <%= @trainee_exam.exam_name %>
     </h1>
     <% if @trainee_exam.is_passed.nil? %>
-      <%= form_for @trainee_exam do |f|%>
-        <%= render partial: "exam_to_mark",
-          object: @trainee_exam %>
-        <%= f.submit t(".submit"), class: "btn btn-primary" %>
-      <% end %>
+      <%= render partial: "exam_to_mark",
+        object: @trainee_exam %>
     <% else %>
       <%= render partial: "marked_exam",
-        object: @trainee_exam %>
+        object: @trainee_exam %>      
     <% end %>
   </div>
 </div>

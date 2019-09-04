@@ -1,0 +1,58 @@
+<div class="quizcontainer">
+  <p><%= t ".total_score", current: marked_exam.total_score,
+    total: marked_exam.exam.total_score %></p>
+  <p><%= t ".pass_score", pass: marked_exam.exam.pass_score %></p>
+  <p><%= t ".total_correct", current: total_correct_questions(marked_exam),
+    total: marked_exam.exam.number_question %></p>
+  <% marked_exam.detail_exams.each
+    .with_index(Settings.one) do |de, i| %>
+    <hr>
+    <div class="container question-content qtext">
+      <%= i %>.
+      <%= de.question_content %>
+      <span class="float-right">
+        <%= t ".score" %>
+        <%= question_level de.question_level %>
+      </span>
+      <span class="float-right">
+        <%= t ".difficulty" %>
+        <%= de.question_level %>
+        &nbsp;&nbsp;
+      </span>
+    </div>
+    <% de.detail_exam_answers.each do |dea| %>
+      <% if dea.checked && dea.answer_correct %>
+        <div class="answer-content chosen-answer correct">
+          <div class="markcontainer">
+            <i class="glyphicon glyphicon-ok"></i>
+          </div>
+          <%= dea.answer_content %>
+          <span class="answercomment">
+            &nbsp;&nbsp;<%= t ".trainee_answer" %>&nbsp;&nbsp;
+          </span>
+        </div>
+      <% elsif dea.checked && !dea.answer_correct %>
+        <div class="answer-content wrong">
+          <div class="markcontainer">
+            <i class="glyphicon glyphicon-remove"></i>
+          </div>
+          <%= dea.answer_content %>
+          <span class="answercomment">
+            &nbsp;&nbsp;<%= t ".trainee_answer" %>&nbsp;&nbsp;
+          </span>
+        </div>
+      <% elsif dea.answer_correct %>
+        <div class="answer-content correct-answer">
+          <%= dea.answer_content %>
+          <span class="answercomment">
+            &nbsp;&nbsp;<%= t ".correct_answer" %>&nbsp;&nbsp;
+          </span>
+        </div>
+      <% else %>  
+        <div class="answer-content">
+          <%= dea.answer_content %>
+        </div>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>

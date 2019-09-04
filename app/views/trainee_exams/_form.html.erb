@@ -27,8 +27,6 @@
           <label class="radiocontainer answer-content">
             <%= dea.hidden_field :answer_id, value: dea.object.answer.id %>
             <%= dea.check_box :checked, id: "answer[#{de.index}][#{dea.index}]",
-              name: "trainee_exam[detail_exams_attributes][#{de.index}]"\
-              "[detail_exam_answers][#{dea.index}][checked]",
               class: "answer-checkbox" %>
             <%= dea.object.answer.content %>
           </label>
