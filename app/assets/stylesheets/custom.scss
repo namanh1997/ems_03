@@ -51,7 +51,7 @@ h2 {
   margin-bottom: 30px;
   text-align: center;
   font-weight: normal;
-  color: rgb(58, 57, 57);
+  color: $h2;
 }
 
 p {
@@ -64,13 +64,13 @@ p {
   float: left;
   margin-right: 10px;
   font-size: 1.7em;
-  color: white;
+  color: $white;
   text-transform: uppercase;
   letter-spacing: -1px;
   padding-top: 9px;
   font-weight: bold;
   &:hover {
-    color: white;
+    color: $white;
     text-decoration: none;
   }
 }
@@ -104,6 +104,7 @@ footer {
 .home{
   background-image: url(/assets/index_background.jpg);
   background-size: contain;
+  background-size: 100% 100%;
 }
 
 /* miscellaneous */
@@ -218,7 +219,6 @@ aside {
 
 /* show exam */
 .radiocontainer {
-  background-color: $back-ground-question;
   display: block;
   position: relative;
   padding: 10px 10px 10px 50px;
@@ -249,12 +249,12 @@ aside {
 }
 
 .answer-content{
-  background-color: $answer-background;
   position: relative;
   padding:10px 10px 10px 40px;
   margin-bottom: 1px;
   font-size: 18px;
   word-wrap: break-word;
+  font-weight: normal;
 }
 
 .checkedlabel {
@@ -292,4 +292,31 @@ aside {
 
 .glyphicon-remove{
   color: $red;
+}
+
+.timer{
+  z-index: 10;
+  position: fixed;
+  right: 10px;
+  top: 130px;
+  width: 200px;
+}
+
+.btn-submit{
+  position: fixed;
+  border-radius: 2px;
+  width: 20%;
+  min-width: 200px;
+  right: 10px;
+  bottom: 50px;
+  width: 200px;
+  background-color: $green;
+  color: $white;
+}
+
+.exam_name{
+  font-weight: bold;
+  font-size: 25px;
+  margin: 15px auto;
+  text-align: center;
 }

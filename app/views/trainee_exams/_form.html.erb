@@ -1,4 +1,4 @@
-<%= form_for @trainee_exam do |f| %>
+<%= form_for @trainee_exam, url: trainee_exams_path, method: :post do |f| %>
   <div class="container">
     <%= hidden_field_tag :remaining_time, value: @remaining_time %>
     <div class="timer">
@@ -6,6 +6,11 @@
       <div id="clock"></div>
     </div>
   </div>
+  
+  <div class="exam_name"> 
+    <%= @trainee_exam.exam_name %>
+  </div>
+
   <%= f.fields_for :detail_exams do |de| %>
     <%= de.hidden_field :question_id, value: de.object.question.id %>
     <hr>
@@ -34,6 +39,7 @@
       <% end %>
     </div>
   <% end %>
+  <%= f.hidden_field :complete_time, value: @exam.time_limit - @remaining_time %>
   <%= f.hidden_field :exam_id, value: @exam.id %>
-  <%= f.submit yield(:button_text), class: "btn btn-primary" %>
+  <%= f.submit yield(:button_text), class: "btn btn-submit" %>
 <% end %>

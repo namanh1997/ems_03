@@ -62,9 +62,10 @@ en:
       signin: Sign in
       signout: Sign out
       account: Account
-      settings: Settings
+      edit: Edit
       profile: Profile
       users: Users
+      subject: Subjects
       mark_exams: Mark Exams
   mark_exams:
     index:
@@ -154,6 +155,9 @@ en:
       score: "Score: %{current}/%{total}"
       trainee_answer: Trainee answer
       correct_answer: Correct answer
+    do_exam:
+      title: Do exam
+      submit: Submit
     trainee_exam:
       passed: Passed
       not_passed: Failed
@@ -165,6 +169,7 @@ en:
       title: Do exam
       remaining_time: Remaining Time
       submit: Submit
+      pleaselogin: Please login!
     show:
       trainee_answer: Trainee answer
       correct_answer: Correct answer

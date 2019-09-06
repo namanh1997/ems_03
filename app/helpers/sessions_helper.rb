@@ -24,15 +24,18 @@ module SessionsHelper
     User.roles.key User.roles[role]
   end
 
+  def redirect_back_or default
+    redirect_to session[:forwarding_url] || default
+    session.delete :forwarding_url
+  end
+
+  def store_location
+    session[:forwarding_url] = request.original_url if request.get?
+  end
+
   private
 
   def current_supervisor?
     current_user.supervisor?
-  end
-
-  def signed_in_user
-    return if signed_in?
-    flash[:danger] = t ".pleaselogin"
-    redirect_to login_url
   end
 end
