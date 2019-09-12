@@ -9,8 +9,9 @@ class TraineeExamsController < ApplicationController
   def index; end
 
   def create
-    @trainee_exam = current_user.trainee_exams.build trainee_exam_params
-    if @trainee_exam.save
+    @trainee_exam.complete_time = Time.now.to_i -
+                                  @trainee_exam.created_at.to_i
+    if @trainee_exam.update trainee_exam_params
       flash[:success] = t "submit_trainee_exam_successful"
       redirect_to root_url
     else

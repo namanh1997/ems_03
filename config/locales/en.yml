@@ -23,6 +23,26 @@ en:
   create_exam_failed: Failed to create exam
   trainee_exam_marked: Mark trainee exam successful
   trainee_exam_marked_failed: Mark trainee exam failed
+  activerecord:
+    errors:
+      models:
+        answer:
+          attributes:
+            content:
+              blank: Content can't be blank
+        exam:
+          attributes:
+            name:
+              blank: Name can't be blank
+              too_long: Name is too long
+            pass_score:
+              blank: Pass score can't be blank
+            total_score:
+              blank: Total score can't be blank
+            number_question:
+              blank: Number question can't be blank
+            time_limit:
+              blank: Time limit can't be blank
   exams:
     new:
       title: New exam
