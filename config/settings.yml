@@ -27,3 +27,9 @@ factories:
     number_question: 3
     name_max_length: 50
     name_invalid_length: 51
+  user:
+    supervisor_role: 0
+    trainee_role: 1
+    phone_length: 11
+    pass_length: 8
+
