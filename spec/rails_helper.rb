@@ -6,6 +6,7 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require "rspec/rails"
 require "support/factory_bot"
 require "support/database_cleaner"
+require "support/spec_test_helper"
 require "factory_bot_rails"
 require "shoulda/matchers"
 
@@ -21,6 +22,7 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = false
   config.infer_spec_type_from_file_location!
   config.filter_rails_from_backtrace!
+  config.include SpecTestHelper, type: :controller
 end
 
 Shoulda::Matchers.configure do |config|
