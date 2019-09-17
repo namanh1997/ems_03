@@ -43,6 +43,19 @@ en:
               blank: Number question can't be blank
             time_limit:
               blank: Time limit can't be blank
+        user:
+          attributes:
+            name:
+              blank: Name can't be blank
+              too_long: Name is too long
+            email:
+              blank: Email can't be blank
+            pass_word:
+              blank: Password can't be blank
+            role:
+              blank: Role can't be blank
+            address:
+              blank: Address can't be blank
   exams:
     new:
       title: New exam
