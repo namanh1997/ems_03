@@ -4,7 +4,7 @@ FactoryBot.define do
     content {Faker::Lorem.unique.question(word_count: 5)}
     question_type {Random.new.rand 1..2}
     level {Random.new.rand 1..3}
-    association :subject
+    association :subject, :user
 
     before(:create) do |question|
       question.answers << FactoryBot.build_list(:answer, 4, question: question)

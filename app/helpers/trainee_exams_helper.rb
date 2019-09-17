@@ -15,7 +15,7 @@ module TraineeExamsHelper
     if detail_exam.is_result?
       Question.levels[detail_exam.question.level]
     else
-      0
+      Settings.zero
     end
   end
 end

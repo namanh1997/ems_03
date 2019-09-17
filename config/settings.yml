@@ -28,8 +28,13 @@ factories:
     name_max_length: 50
     name_invalid_length: 51
   user:
-    supervisor_role: 0
-    trainee_role: 1
+    supervisor_role: 1
+    trainee_role: 0
     phone_length: 11
     pass_length: 8
-
+    role: 0
+    pass_score: 3
+    total_score: 6
+    number_question: 3
+    name_max_length: 50
+    name_invalid_length: 51
