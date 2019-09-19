@@ -37,4 +37,6 @@ factories:
     total_score: 6
     number_question: 3
     name_max_length: 50
+    email_max_length: 255
+    email_invalid_length: 256
     name_invalid_length: 51

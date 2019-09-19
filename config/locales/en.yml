@@ -50,6 +50,7 @@ en:
               too_long: Name is too long
             email:
               blank: Email can't be blank
+              too_long: Email is too long
             pass_word:
               blank: Password can't be blank
             role:
