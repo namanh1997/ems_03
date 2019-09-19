@@ -27,9 +27,22 @@ RSpec.describe User, type: :model do
         .is_at_most(Settings.factories.user.name_max_length)
         .with_message(I18n.t("activerecord.errors.models.user.attributes.name.too_long"))}
     end
-
     context "invalid" do
       before {subject.name = "a" * Settings.factories.user.name_invalid_length}
+      it {is_expected.not_to be_valid}
+    end
+  end
+
+  describe "email" do
+    context "valid" do
+      it {is_expected.to validate_presence_of(:email)
+        .with_message(I18n.t("activerecord.errors.models.user.attributes.email.blank"))}
+      it {is_expected.to validate_length_of(:email)
+        .is_at_most(Settings.factories.user.email_max_length)
+        .with_message(I18n.t("activerecord.errors.models.user.attributes.email.too_long"))}
+    end
+    context "invalid" do
+      before {subject.name = "a" * Settings.factories.user.email_invalid_length}
       it {is_expected.not_to be_valid}
     end
   end
@@ -51,11 +64,13 @@ RSpec.describe User, type: :model do
     end 
   end
 
-  describe "#downcase_email" do
-    let(:user1) {FactoryBot.build :user, email: "AbC@gmail.Com"}
+  describe "Method private" do
+    context "#downcase_email" do
+      let(:user1) {FactoryBot.build :user, email: "AbC@gmail.Com"}
 
-    it "should email downcase" do
-      expect(user1.email.downcase!).to eq "abc@gmail.com"
+      it "should email downcase" do
+        expect(user1.email.downcase!).to eq "abc@gmail.com"
+      end
     end
   end
 end

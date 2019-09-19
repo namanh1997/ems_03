@@ -23,6 +23,7 @@ en:
   create_exam_failed: Failed to create exam
   trainee_exam_marked: Mark trainee exam successful
   trainee_exam_marked_failed: Mark trainee exam failed
+  signin_successful: Signin successful
   activerecord:
     errors:
       models:
@@ -50,6 +51,7 @@ en:
               too_long: Name is too long
             email:
               blank: Email can't be blank
+              too_long: Email is too long
             pass_word:
               blank: Password can't be blank
             role:

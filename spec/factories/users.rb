@@ -6,7 +6,7 @@ FactoryBot.define do
     phone {Faker::PhoneNumber
       .subscriber_number length: Settings.factories.user.phone_length}
     password {Faker::Lorem.characters number: Settings.factories.user.pass_length}
-    role {Settings.factories.user.supervisor_role}
+    role {User.roles.key(User.roles[:supervisor])}
   end
 
   FactoryBot.define do
@@ -16,7 +16,7 @@ FactoryBot.define do
       address {Faker::Address.country}
       password {Faker::Lorem.unique.characters number: 6}
       phone {Faker::PhoneNumber.phone_number[9..14]}
-      role {Random.new.rand 0..1}
+      role {User.roles.key(User.roles[:trainee])}
     end
   end
 end
