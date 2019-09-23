@@ -98,7 +98,7 @@ en:
       edit: Edit
       profile: Profile
       users: Users
-      subject: Subjects
+      subjects: Subjects
       mark_exams: Mark Exams
   mark_exams:
     index:
@@ -252,3 +252,82 @@ en:
     formats:
       date_time: "%T %d/%m/%y"
       exam_time: "%T"
+  devise:
+    confirmations:
+      new:
+        title: Resend confirmation instructions
+        header: Resend confirmation instructions
+        email: Email
+        resend_confirmation: Resend confirmation instructions
+    mailer:
+      confirmation_intructions:
+        welcome: Welcome
+        you_can_confirm: You can confirm your account email through 
+          the link below":"
+        confirm_my_account: Confirm my account
+      password_change:
+        hello: Hello
+        password_has_been_changed: We're contacting you to notify you 
+          that your password has been changed.
+      reset_password_instructions:
+        hello: Hello
+        request: Someone has requested a link to change your password. 
+          You can do this through the link below.
+        change_my_pass: Change my password
+        ignore: If you didn't request this, please ignore this email.
+        password_wont_change: Your password won't change until you access 
+          the link above and create a new one.
+    passwords:
+      edit:
+        title: Change your password
+        header: Change your password
+        new_password: New Password
+        confirm_new_password: Confirm new password
+        change_my_password: Change password
+        character_min: Characters minimum
+      new:
+        title: Forgot your password?
+        header: Forgot your password?
+        email: Email
+        send: Send to email
+    registrations:
+      edit:
+        title: Edit profile
+        header: Edit
+        email: Email
+        name: Name
+        phone: Phone
+        address: Address
+        password: Password
+        password_confirm: Password Confirmation
+        current_password: Current Password
+        update: Update
+        need_currentpass: we need your current password to confirm your changes
+        leave_blank: leave blank if you don't want to change it
+        character_min: Characters minimum
+        waiting_confirm: Currently waiting confirmation for
+        back: Back
+      new:
+        title: Sign up
+        header: Sign up
+        name: Name
+        email: Email
+        password: Password
+        password_confirm: Password Confirmation
+        sign_up: Sign up
+        character_min: Characters minimum
+    sessions:
+      new:
+        title: Sign in
+        header: Sign in
+        email: Email
+        password: Password
+        remember_me: Remember me
+        submit: Sign in
+    shared:
+      links:
+        log_in: Sign in
+        sign_up: Sign up
+        forgot_password: Forgot password?
+        not_receive_confirm_instruct: Didn't receive confirmation 
+          instructions?
