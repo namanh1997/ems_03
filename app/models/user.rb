@@ -2,6 +2,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :confirmable, :registerable,
     :recoverable, :rememberable, :validatable
 
+  USER_PARAMS = %i(name email password password_confirmation role).freeze
+
   has_many :questions
   has_many :trainee_exams, dependent: :destroy
   before_save :downcase_email

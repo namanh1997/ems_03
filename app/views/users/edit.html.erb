@@ -1,5 +1,6 @@
 <% provide :title, t(".title") %>
 <h1><%= t ".header" %></h1>
+
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <%= form_for @user do |f| %>
@@ -16,10 +17,10 @@
 
       <%= f.label t(".confirmation") %>
       <%= f.password_field :password_confirmation, class: "form-control" %>
-      
+
       <br />
-      
-      <% if current_supervisor? %>
+
+      <% if supervisor_user? %>
         <%= f.label t(".role")%><br />
 
         <%= f.radio_button :role, user_role("trainee"), checked: true %>
@@ -28,7 +29,7 @@
         <%= f.radio_button :role, user_role("supervisor") %>
         <%= f.label :role, t(".supervisor"), value: user_role("supervisor") %>
       <% end %>
-      
+      <br />
       <%= f.submit t ".save_changes", class: "btn btn-primary" %>
     <% end %>
   </div>

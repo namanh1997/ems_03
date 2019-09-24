@@ -20,7 +20,7 @@
 
   <%= f.radio_button :role, User.roles.key(User.roles[:supervisor]) %>
   <%= f.label :role, t(".supervisor"), value: User.roles.key(User.roles[:supervisor]) %>
-
+  <br />
 
   <%= f.submit yield(:button), class: "btn btn-primary" %>
 <% end %>

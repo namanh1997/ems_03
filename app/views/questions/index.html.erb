@@ -2,7 +2,7 @@
 <h1><%= t ".header" %></h1>
 
 <div class="container">
-  <%= button_to t(".new_question"), {action: :new}, {method: :get,
+  <%= link_to t(".new_question"), {action: :new}, {method: :get,
     class: "btn btn-primary", id: "btn-new-question"} %>
 </div>
 
@@ -12,4 +12,4 @@
   </ul>
 </div>
 
-<%= paginate @questions, theme: "twitter-bootstrap-3" %>
+<%= paginate @questions, theme: "twitter-bootstrap-4" %>

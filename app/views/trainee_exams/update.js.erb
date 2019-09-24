@@ -1,18 +1,12 @@
 $("#score-<%=@trainee_exam.id%>").html(
-  '<td id="score-<%=@trainee_exam.id%>">'
-  + '<%= @trainee_exam.total_score %>'
-  + '</td>');
+  '<%= @trainee_exam.total_score %>');
 $("#check-<%=@trainee_exam.id%>").html(
-  '<td id="check-<%=@trainee_exam.id%>">'
-  + '<% if @trainee_exam.is_passed == nil %>'
+ '<% if @trainee_exam.is_passed == nil %>'
   + '<%= t ".not_marked" %>'
   + '<% elsif @trainee_exam.is_passed? %>'
   + '<%= t ".passed" %>'
   + '<% else %>'
   + '<%= t ".not_passed" %>'
-  + '<% end %>'
-  + '</td>');
+  + '<% end %>');
 $("#mark-<%=@trainee_exam.id%>").html(
-  '<td id="mark-<%=@trainee_exam.id%>">'
-  + '<%= t ".marked" %>'
-  + '</td>');
+  '<%= t ".marked" %>');
