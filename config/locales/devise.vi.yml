@@ -1,0 +1,53 @@
+vi:
+  devise:
+    confirmations:
+      confirmed: Xác thực email thành công
+      send_instructions: Kiểm tra email để xác thực!
+      send_paranoid_instructions: Nếu email của bạn đã tồn tại trong hệ thống,
+        bạn sẽ nhận được email hướng dẫn xác thực trong ít phút.
+    failure:
+      already_authenticated: Đăng nhập thành công
+      inactive: Tài khoản chưa xác thực
+      invalid: Tài khoản hoặc mật khẩu không đúng
+      locked: Tài khoản của bạn đã bị khóa
+      last_attempt: Bạn còn một cơ hội trước khi tài khoản bị khóa
+      not_found_in_database: Tài khoản hoặc mật khẩu không đúng
+      timeout: Session đăng nhập của bạn đã quá hạn. Vui lòng thực hiện đăng nhập lại
+      unauthenticated: Bạn cần đăng nhập hoặc đăng ký trước khi tiếp tục
+      unconfirmed: Bạn cần xác nhận email trước khi tiếp tục
+    mailer:
+      confirmation_instructions:
+        subject: Xác thực email
+      reset_password_instructions:
+        subject: Khôi phục mật khẩu
+      email_changed:
+        subject: Thay đổi email
+      password_change:
+        subject: Thay đổi mật khẩu
+    passwords:
+      no_token: Sai đường dẫn
+      send_instructions: Kiểm tra email để khôi phục mật khẩu
+      send_paranoid_instructions: Nếu email của bạn đã tồn tại trong hệ thống,
+        bạn sẽ nhận được đường dẫn khôi phục lại mật khẩu qua email trong ít phút
+      updated: Đổi mật khẩu thành công, hãy đăng nhập lại
+      updated_not_active: "Mật khẩu đổi thành công"
+    registrations:
+      signed_up: Đăng ký tài khoản thành công
+      signed_up_but_inactive: Đăng ký thành công, tuy nhiên bạn cần kiểm tra email để kích hoạt
+      signed_up_but_unconfirmed: Đăng ký thành công, tuy nhiên bạn cần kiểm tra email để kích hoạt
+      update_needs_confirmation: Cập nhật thành công, tuy nhiên bạn cần kiểm tra email để xác thực
+      updated: Cập nhật tài khoản thành công
+      updated_but_not_signed_in: "Tài khoản của bạn đã được cập nhật thành công. Nhưng do mật khẩu của bạn đã được thay đổi, do đó bạn cần đăng nhập lại"
+    sessions:
+      signed_in: Đăng nhập thành công
+      signed_out: Đăng xuất thành công
+      already_signed_out: Tài khoản đã đăng xuất
+  errors:
+    messages:
+      already_confirmed: đã được xác nhận, hãy thử đăng nhập lại
+      confirmation_period_expired: "cần được xác nhận với %{period}, hãy yêu cầu lại"
+      expired: đã quá hạn, hãy yêu cầu lại
+      not_found: không tìm thấy
+      not_saved:
+        one: "1 lỗi %{resource} xuất hiện"
+        other: "%{count} lỗi %{resource} xuất hiện"

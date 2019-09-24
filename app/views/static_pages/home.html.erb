@@ -4,6 +4,6 @@
 
   <h2><%= t ".content" %></h2>
   <% if !signed_in? %>
-    <%= link_to t(".signin"), signin_path, class: "btn btn-lg btn-primary" %>
+    <%= link_to t(".signin"), new_user_session_path, class: "btn btn-lg btn-primary" %>
   <% end %>
 </div>  

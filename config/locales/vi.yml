@@ -17,6 +17,8 @@ vi:
       settings: Cài đặt
       profile: Thông tin cá nhân
       users: Người dùng
+      subjects: Chủ đề
+      mark_exams: Chấm bài
   sessions:  
     new:
       title: Đăng nhập
@@ -51,3 +53,80 @@ vi:
       previous: "&lsaquo; Trước"
       next: "Sau &rsaquo;"
       truncate: "&hellip;"
+  devise:
+    confirmations:
+      new:
+        title: Gửi lại hướng dẫn xác thực
+        header: Gửi lại hướng dẫn xác thực
+        email: Email
+        resend_confirmation: Gửi lại hướng dẫn xác thực
+    mailer:
+      confirmation_intructions:
+        welcome: Chào mừng
+        you_can_confirm: "Bạn có thể xác thực email qua đường dẫn sau:"
+        confirm_my_account: Xác thực tài khoản
+      password_change:
+        hello: Xin chào
+        password_has_been_changed: Chúng tôi xin thông báo rằng mật khẩu
+          của bạn đã được thay đổi
+      reset_password_instructions:
+        hello: Xin chào
+        request: Ai đó đã yêu cầu đổi mật khẩu của bạn. Hãy vào đường 
+          dẫn sau để đổi mật khẩu
+        change_my_pass: Đổi mật khẩu
+        ignore: Nếu bạn không muốn đổi mật khẩu, hãy bỏ qua email này.
+        password_wont_change: Mật khẩu của bạn sẽ không đổi trừ khi bạn 
+          truy cập đường dẫn trên và tạo mật khẩu mới.
+    passwords:
+      edit:
+        title: Thay đổi mật khẩu
+        header: Thay đổi mật khẩu
+        new_password: Mật khẩu mới
+        confirm_new_password: Xác nhận mật khẩu mới
+        change_my_password: Đổi mật khẩu
+        character_min: ký tự tối thiểu
+      new:
+        title: Quên mật khẩu?
+        header: Quên mật khẩu?
+        email: Email
+        send: Gửi đến email
+    registrations:
+      edit:
+        title: Cập nhật thông tin
+        header: Cập nhật
+        email: Email
+        name: Tên
+        phone: Điện thoại
+        address: Địa chỉ
+        password: Mật khẩu
+        password_confirm: Xác nhận mật khẩu
+        current_password: Mật khẩu hiện tại
+        update: Cập nhật
+        need_currentpass: nhập mật khẩu hiện tại để xác nhận
+        leave_blank: để trống nếu không đổi mật khẩu
+        character_min: ký tự tối thiểu
+        waiting_confirm: Hiện đang chờ xác nhận
+        back: Quay lại
+      new:
+        title: Đăng ký
+        header: Đăng ký
+        name: Tên
+        email: Email
+        password: Mật khẩu
+        password_confirm: Xác nhận mật khẩu
+        sign_up: Đăng ký
+        character_min: ký tự tối thiểu
+    sessions:
+      new:
+        title: Đăng nhập
+        header: Đăng nhập
+        email: Email
+        password: Mật khẩu
+        remember_me: Nhớ tài khoản
+        submit: Đăng nhập
+    shared:
+      links:
+        log_in: Đăng nhập
+        sign_up: Đăng ký
+        forgot_password: Quên mật khẩu?
+        not_receive_confirm_instruct: Không nhận được hướng dẫn xác thực?

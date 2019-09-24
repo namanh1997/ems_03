@@ -5,8 +5,8 @@
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to t(".home"), root_path %></li>
         <li><%= link_to t(".subjects"), subject_index_path %></li>
-        <% if signed_in? %>
-          <% if current_supervisor? %>
+        <% if user_signed_in? %>
+          <% if current_user.supervisor? %>
             <li><%= link_to t(".questions"), questions_path %></li>
             <li><%= link_to t(".mark_exams"), mark_exams_path %></li>     
             <li><%= link_to t(".users"), users_path %></li>    
@@ -19,15 +19,15 @@
             </a>
             <ul class="dropdown-menu">
               <li><%= link_to t(".profile"), current_user %></li>
-                <li><%= link_to t(".edit"), edit_user_path(current_user) %></li>
+                <li><%= link_to t(".edit"), edit_user_registration_path %></li>
               <li class="divider"></li>
               <li>
-                <%= link_to t(".signout"), signout_path, method: :delete %>
+                <%= link_to t(".signout"), destroy_user_session_path, method: :delete %>
               </li>
             </ul>
           </li>
         <% else %>
-          <li><%= link_to t(".signin"), signin_path %></li>
+          <li><%= link_to t(".signin"), new_user_session_path %></li>
         <% end %>
       </ul>
     </nav>
