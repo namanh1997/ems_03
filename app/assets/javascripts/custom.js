@@ -45,6 +45,10 @@ $(document).on("turbolinks:load", function(){
   $(".answer-radiobutton").click("change", function() {
     $(this).parent().siblings().children("input:radio").prop("checked", false);
   });
+
+  $(".alert").fadeTo(3000, 500).slideUp(500, function() {
+    $(".alert").remove();
+  });
 });
 
 var countdown = function() {

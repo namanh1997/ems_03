@@ -1,4 +1,7 @@
 class SubjectController < ApplicationController
+  before_action :authenticate_user!
+  before_action :supervisor_user, only: %i(new create)
+
   def index
     @subjects = Subject.sort_by_name.page(params[:page])
                        .per Settings.subjects_per_page

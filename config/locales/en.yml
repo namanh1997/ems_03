@@ -3,6 +3,7 @@ en:
   pleaselogin: Please login!
   hello: Hello %{user_name}
   invalid: Invalid email/password combination
+  must_be_supervisor: You are not authorized to do this action
   no_user: User doesn't exist
   no_subject: Subject doesn't exist
   no_question: Question doesn't exist

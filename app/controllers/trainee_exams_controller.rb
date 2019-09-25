@@ -1,5 +1,6 @@
 class TraineeExamsController < ApplicationController
-  before_action :load_exam_new, :signed_in_user, only: %i(new do_exam)
+  before_action :authenticate_user!
+  before_action :load_exam_new, only: %i(new do_exam)
   before_action :load_trainee_exam_new, only: :do_exam
   before_action :load_exam_create, only: :create
   before_action :supervisor_user, only: %i(edit update)

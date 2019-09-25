@@ -15,6 +15,8 @@ class ApplicationController < ActionController::Base
   end
 
   def supervisor_user
-    redirect_to root_url unless current_user.supervisor?
+    return if current_user.supervisor?
+    flash[:error] = t "must_be_supervisor"
+    redirect_to root_url
   end
 end
