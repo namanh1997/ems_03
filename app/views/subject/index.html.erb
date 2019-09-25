@@ -1,10 +1,10 @@
 <% provide :title, t(".title") %>
 <h1><%= t ".header" %></h1>
 
-<% if signed_in? %>
-  <% if current_supervisor? %>
+<% if user_signed_in? %>
+  <% if supervisor_user? %>
     <div class="container">
-      <%= button_to t(".new_subject"), {action: :new}, {method: :get,
+      <%= link_to t(".new_subject"), {action: :new}, {method: :get,
         class: "btn btn-primary", id: "btn-new-subject"} %>
     </div>
   <% end %>
@@ -12,14 +12,10 @@
 
 <div class="container">
   <ul class="subjects">
-    <% @subjects.each_slice(3) do |chunk| %>
-      <% chunk.each do |subject| %>
-        <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4 col-centered">
-          <%= link_to subject.name, exams_path(subject_id: subject.id) %>
-        </div>
-      <% end %>
+    <% @subjects.each do |subject| %>
+      <li><%= link_to subject.name, exams_path(subject_id: subject.id) %></li>
     <% end %>
   </ul>
 </div>
 
-<%= paginate @subjects, theme: "twitter-bootstrap-3" %>
+<%= paginate @subjects, theme: "twitter-bootstrap-4" %>

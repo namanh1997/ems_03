@@ -2,26 +2,26 @@
 <h1><% t ".header" %></h1>
 
 <div class="container">
-  <% if current_supervisor? %>
-    <%= button_to t(".new_user"), {action: :new}, {method: :get,
-      class: "btn btn-success", id: "btn-new-user"} %>
+  <% if supervisor_user? %>
+    <%= link_to t(".new_user"), new_user_registration_path,
+      {method: :get, class: "btn btn-success", id: "btn-new-user"} %>
   <% end %>
 </div>
-  
+
 <div class="container">
   <ul class="users">
     <% @users.each do |user| %>
-      <li>  
+      <li>
         <%= gravatar_for user %>
         <%= link_to user.name, user %>
-        <% if current_supervisor? && !current_user?(user) %> |
-          <%= link_to t(".edit"), edit_user_path(user)%> |   
+        <% if supervisor_user? && !current_user?(user) %> |
+          <%= link_to t(".edit"), edit_user_path(current_user)%> |   
           <%= link_to t(".delete"), user, method: :delete,
             data: { confirm: t(".sure") } %>
         <% end %>
       </li>
-    <% end %>   
+    <% end %>
   </ul>
 </div>
 
-<%= paginate @users, theme: "twitter-bootstrap-3" %>
+<%= paginate @users, theme: "twitter-bootstrap-4" %>

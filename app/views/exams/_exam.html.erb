@@ -1,6 +1,6 @@
 <li>
-  <% if signed_in? %>
-    <% if current_supervisor? %>
+  <% if user_signed_in? %>
+    <% if supervisor_user? %>
       <%= link_to exam.name, exam %>
     <% else %>
       <%= link_to exam.name, new_trainee_exam_path(exam_id: exam.id) %>

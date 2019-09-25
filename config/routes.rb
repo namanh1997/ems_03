@@ -6,7 +6,7 @@ Rails.application.routes.draw do
 
     get "/do_exam", to: "trainee_exams#do_exam"
     resources :subject, :questions, :exams, :trainee_exams
-    resources :users, only: %i(show index)
+    resources :users
     resources :mark_exams, only: :index
   end
 end
